@@ -1,3 +1,9 @@
+/**
+ * It takes in a data object, and returns an object with three properties: name, picture, and
+ * getUserCardDOM
+ * @param data - an object with the photographer's name and portrait
+ * @returns An object with the name, picture, and getUserCardDOM properties.
+ */
 function photographerFactory(data) {
     const { name, portrait } = data;
 
