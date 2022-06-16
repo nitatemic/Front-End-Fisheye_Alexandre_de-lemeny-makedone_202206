@@ -32,10 +32,8 @@ h1 {
 
 .photographer_section article {
     flex: 1 0 32%;
-    margin: 5px;
+    margin: 5px 5px 10% 5px;
     height: auto;
-
-
 }
 
 .photographer_section article h2 {
@@ -56,6 +54,9 @@ h1 {
     object-fit: cover;
 }
 
+article {
+    margin: auto auto 10% auto ;
+}
 .card-link {
     text-decoration: none;
     color: black;
@@ -69,11 +70,16 @@ h1 {
 text-align: center;
 }
 
-.photographer-info {
+.photographer-info{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     width: 100%;
+}
+
+.photographer-info > *{
+    margin: 2%;
+    text-align: center;
 }
 
