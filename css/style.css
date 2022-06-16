@@ -32,18 +32,23 @@ h1 {
 
 .photographer_section article {
     flex: 1 0 32%;
-    margin: 5px 5px 10% 5px;
+    margin: 5px 5px 7% 5px;
     height: auto;
 }
 
 .photographer_section article h2 {
     color: #D3573C;
     font-size: 36px;
+    margin: 5% 0 0 0 ;
 }
 
 .photographer_section article img {
     height: 200px;
     width: 200px;
+}
+
+.shadow {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
 .round {
@@ -54,9 +59,6 @@ h1 {
     object-fit: cover;
 }
 
-article {
-    margin: auto auto 10% auto ;
-}
 .card-link {
     text-decoration: none;
     color: black;
@@ -67,7 +69,8 @@ article {
 }
 
 .card-link > h2 {
-text-align: center;
+    text-align: center;
+    margin : 0;
 }
 
 .photographer-info{
@@ -83,3 +86,7 @@ text-align: center;
     text-align: center;
 }
 
+.photographer-city {
+    font-size: 20px;
+    color: #901C1C;
+}

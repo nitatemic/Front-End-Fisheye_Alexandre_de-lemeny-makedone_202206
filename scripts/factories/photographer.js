@@ -18,7 +18,7 @@ function photographerFactory(data) {
 
     const img = document.createElement('img');
     img.setAttribute('src', picture);
-    img.className = 'photographer_picture round cover';
+    img.className = 'photographer_picture round cover shadow';
     link.appendChild(img);
 
     const h2 = document.createElement('h2');
@@ -31,14 +31,17 @@ function photographerFactory(data) {
 
     const h3 = document.createElement('h3');
     h3.textContent = `${city}, ${country}`;
+    h3.className = 'photographer-city';
     photographerInfo.appendChild(h3);
 
     const p = document.createElement('p');
-    p.textContent = tagline;
+    p.textContent = `tagline/jour`;
+    p.className = 'photographer-tagline';
     photographerInfo.appendChild(p);
 
     const p2 = document.createElement('p');
     p2.textContent = `${price}$`;
+    p2.className = 'photographer-price';
     photographerInfo.appendChild(p2);
 
     return (article);
