@@ -12,7 +12,7 @@ export default function photographerFactory(data) {
   function getUserCardDOM() {
     const article = document.createElement('article');
     const link = document.createElement('a');
-    link.href = `../pages/photographer.html?id=${id}`;
+    link.href = `./photographer.html?id=${id}`;
     link.className = 'card-link';
     article.appendChild(link);
 
