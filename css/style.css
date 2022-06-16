@@ -82,11 +82,20 @@ h1 {
 }
 
 .photographer-info > *{
-    margin: 2%;
+    margin: 0.8%;
     text-align: center;
 }
 
 .photographer-city {
-    font-size: 20px;
+    font-size: 1rem;
     color: #901C1C;
+    font-weight: 500;
+}
+
+.photographer-tagline {
+    font-size: .8rem;
+}
+.photographer-price {
+    font-size: .8rem;
+    color: #B7B6B6;
 }

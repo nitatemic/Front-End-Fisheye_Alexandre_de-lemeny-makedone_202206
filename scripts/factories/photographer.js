@@ -35,12 +35,12 @@ function photographerFactory(data) {
     photographerInfo.appendChild(h3);
 
     const p = document.createElement('p');
-    p.textContent = `tagline/jour`;
+    p.textContent = tagline;
     p.className = 'photographer-tagline';
     photographerInfo.appendChild(p);
 
     const p2 = document.createElement('p');
-    p2.textContent = `${price}$`;
+    p2.textContent = `${price}€/jour`;
     p2.className = 'photographer-price';
     photographerInfo.appendChild(p2);
 
