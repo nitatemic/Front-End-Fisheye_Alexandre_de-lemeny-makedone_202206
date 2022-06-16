@@ -4,7 +4,7 @@
  * @param data - an object with the photographer's name and portrait
  * @returns An object with the name, picture, and getUserCardDOM properties.
  */
-function photographerFactory(data) {
+export default function photographerFactory(data) {
   const { name, id, city, country, tagline, price, portrait } = data;
 
   const picture = `../assets/photographers_pic/${portrait}`;

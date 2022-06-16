@@ -1,3 +1,5 @@
+// eslint-disable-next-line import/extensions
+import photographerFactory from '../factories/photographer.js';
 /**
  * It returns a promise that resolves to an object with a photographers property, which is an array
  * of objects
