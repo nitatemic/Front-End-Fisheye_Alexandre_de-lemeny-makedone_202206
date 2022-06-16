@@ -13,7 +13,7 @@ async function getPhotographers() {
       country: 'UK',
       tagline: 'Voir le beau dans le quotidien',
       price: 400,
-      portrait: '../../assets/Photographers_ID_Photos/MimiKeel.jpg',
+      portrait: 'MimiKeel.jpg',
     },
     {
       name: 'Ellie-Rose Wilkens',
@@ -22,7 +22,7 @@ async function getPhotographers() {
       country: 'France',
       tagline: 'Capturer des compositions complexes',
       price: 250,
-      portrait: '../../assets/Photographers_ID_Photos/EllieRoseWilkens.jpg',
+      portrait: 'EllieRoseWilkens.jpg',
     },
     {
       name: 'Tracy Galindo',
@@ -31,7 +31,7 @@ async function getPhotographers() {
       country: 'Canada',
       tagline: 'Photographe freelance',
       price: 500,
-      portrait: '../../assets/Photographers_ID_Photos/TracyGalindo.jpg',
+      portrait: 'TracyGalindo.jpg',
     },
     {
       name: 'Nabeel Bradford',
@@ -40,7 +40,7 @@ async function getPhotographers() {
       country: 'Mexico',
       tagline: "Toujours aller de l'avant",
       price: 350,
-      portrait: '../../assets/Photographers_ID_Photos/NabeelBradford.jpg',
+      portrait: 'NabeelBradford.jpg',
     },
     {
       name: 'Rhode Dubois',
@@ -49,7 +49,7 @@ async function getPhotographers() {
       country: 'Spain',
       tagline: 'Je crée des souvenirs',
       price: 275,
-      portrait: '../../assets/Photographers_ID_Photos/RhodeDubois.jpg',
+      portrait: 'RhodeDubois.jpg',
     },
     {
       name: 'Marcel Nikolic',
@@ -58,7 +58,7 @@ async function getPhotographers() {
       country: 'Germany',
       tagline: 'Toujours à la recherche de LA photo',
       price: 300,
-      portrait: '../../assets/Photographers_ID_Photos/MarcelNikolic.jpg',
+      portrait: 'MarcelNikolic.jpg',
     },
   ];
 

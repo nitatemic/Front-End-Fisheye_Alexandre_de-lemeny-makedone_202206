@@ -5,19 +5,43 @@
  * @returns An object with the name, picture, and getUserCardDOM properties.
  */
 function photographerFactory(data) {
-  const { name, portrait } = data;
+  const { name, id, city, country, tagline, price, portrait } = data;
 
-  const picture = `assets/photographers/${portrait}`;
+  const picture = `../assets/photographers_pic/${portrait}`;
 
   function getUserCardDOM() {
     const article = document.createElement('article');
+    const link = document.createElement('a');
+    link.href = `../pages/photographer.html?id=${id}`;
+    link.className = 'card-link';
+    article.appendChild(link);
+
     const img = document.createElement('img');
     img.setAttribute('src', picture);
+    img.className = 'photographer_picture round cover';
+    link.appendChild(img);
+
     const h2 = document.createElement('h2');
     h2.textContent = name;
-    article.appendChild(img);
-    article.appendChild(h2);
+    link.appendChild(h2);
+
+    const photographerInfo = document.createElement('div');
+    photographerInfo.className = 'photographer-info';
+    article.appendChild(photographerInfo);
+
+    const h3 = document.createElement('h3');
+    h3.textContent = `${city}, ${country}`;
+    photographerInfo.appendChild(h3);
+
+    const p = document.createElement('p');
+    p.textContent = tagline;
+    photographerInfo.appendChild(p);
+
+    const p2 = document.createElement('p');
+    p2.textContent = `${price}$`;
+    photographerInfo.appendChild(p2);
+
     return (article);
   }
-  return { name, picture, getUserCardDOM };
+  return { getUserCardDOM };
 }

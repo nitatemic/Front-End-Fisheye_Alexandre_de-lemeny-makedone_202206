@@ -25,18 +25,17 @@ h1 {
 }
 
 .photographer_section {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 70px;
-    margin-top: 100px;
+    display: flex;
+    flex-wrap: wrap;
+
 }
 
 .photographer_section article {
-    justify-self: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+    flex: 1 0 32%;
+    margin: 5px;
+    height: auto;
+
+
 }
 
 .photographer_section article h2 {
@@ -48,3 +47,33 @@ h1 {
     height: 200px;
     width: 200px;
 }
+
+.round {
+    border-radius: 50%;
+}
+
+.cover {
+    object-fit: cover;
+}
+
+.card-link {
+    text-decoration: none;
+    color: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.card-link > h2 {
+text-align: center;
+}
+
+.photographer-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
