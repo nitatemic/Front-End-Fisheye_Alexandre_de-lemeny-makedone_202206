@@ -46,5 +46,15 @@ export default function photographerFactory(data) {
 
     return (article);
   }
-  return { getUserCardDOM };
+
+  function getPhotographerHeaderDOM() {
+    const header = document.createElement('header');
+    header.className = 'photographer-header';
+    const h1 = document.createElement('h1');
+    h1.textContent = name;
+    header.appendChild(h1);
+    return (header);
+  }
+
+  return { getUserCardDOM, getPhotographerHeaderDOM };
 }

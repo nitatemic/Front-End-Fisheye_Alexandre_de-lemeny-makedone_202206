@@ -5,7 +5,7 @@ import photographerFactory from '../factories/photographer.js';
  * of objects
  * @returns An object with a photographers property.
  */
-async function getPhotographers() {
+export default async function getPhotographers() {
 
   const photographers = [
     {
