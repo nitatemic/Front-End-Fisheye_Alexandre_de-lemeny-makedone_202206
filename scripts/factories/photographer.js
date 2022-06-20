@@ -19,6 +19,7 @@ export default function photographerFactory(data) {
     const img = document.createElement('img');
     img.setAttribute('src', picture);
     img.className = 'photographer_picture round cover shadow';
+    img.setAttribute('alt', `Photographie de ${name}`);
     link.appendChild(img);
 
     const h2 = document.createElement('h2');
