@@ -14,12 +14,14 @@ export default function photographerFactory(data) {
     const link = document.createElement('a');
     link.href = `./photographer.html?id=${id}`;
     link.className = 'card-link';
+    link.setAttribute('aria-label', `Aller vers la page du photographe ${name}`);
     article.appendChild(link);
 
     const img = document.createElement('img');
     img.setAttribute('src', picture);
     img.className = 'photographer_picture round cover shadow';
     img.setAttribute('alt', `Photographie de ${name}`);
+    img.setAttribute('aria-label', `Photographie de ${name}`);
     link.appendChild(img);
 
     const h2 = document.createElement('h2');
