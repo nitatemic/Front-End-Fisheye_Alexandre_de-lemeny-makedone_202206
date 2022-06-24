@@ -5,7 +5,7 @@
 .photograph-header {
     background-color: #FAFAFA;
     height: 300px;
-    margin: 0 100px;
+    margin: 0 7% 0 7%;
 }
 
 .contact_button {
@@ -73,4 +73,38 @@ form input {
     height: 68px;
     border: none;
     border-radius: 5px;
+}
+
+.filter {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    max-width: 25%;
+    margin: 2% 0 0 7%;
+}
+.filter > p {
+
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: #312E2E;
+}
+select {
+    padding: 6% 5% 6% 5%;
+    appearance: none;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    text-align: center;
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: white;
+    border: none;
+    min-width:fit-content;
+    background-color: #901C1C;
+    border-radius: 5px;
+    cursor: pointer;
+    background-image: url(../assets/icons/angle-down-solid.svg);
+    background-repeat: no-repeat;
+    background-position: right;
+    background-size: 1.5rem;
 }

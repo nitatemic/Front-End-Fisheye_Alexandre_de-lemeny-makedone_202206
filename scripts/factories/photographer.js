@@ -5,7 +5,9 @@
  * @returns An object with the name, picture, and getUserCardDOM properties.
  */
 export default function photographerFactory(data) {
-  const { name, id, city, country, tagline, price, portrait } = data;
+  const {
+    name, id, city, country, tagline, price, portrait,
+  } = data;
 
   const picture = `../assets/photographers_pic/${portrait}`;
 
@@ -50,14 +52,13 @@ export default function photographerFactory(data) {
     return (article);
   }
 
-  function getPhotographerHeaderDOM() {
-    const header = document.createElement('header');
-    header.className = 'photographer-header';
-    const h1 = document.createElement('h1');
-    h1.textContent = name;
-    header.appendChild(h1);
-    return (header);
+  function getPhotographerSummaryDOM() {
+    const summary = document.getElementById('photographer-summary');
+    const nameH1 = document.createElement('h1');
+    nameH1.textContent = name;
+    summary.appendChild(nameH1);
+    return (summary);
   }
 
-  return { getUserCardDOM, getPhotographerHeaderDOM };
+  return { getUserCardDOM, getPhotographerSummaryDOM };
 }

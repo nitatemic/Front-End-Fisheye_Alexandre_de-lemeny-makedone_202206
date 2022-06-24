@@ -20,7 +20,18 @@
         </div>
         <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
         <img id="photographer-pp" class="photographer_picture round cover shadow" />
-      </div>
+      </div> <!-- end of photograph-header -->
+      <div class="photograph-content">
+        <div class="filter">
+          <p>Trier par</p>
+          <label for="filter-select"></label>
+          <select id="filter-select" class="filter">
+            <option value="all">Popularité</option>
+            <option value="nature">Date</option>
+            <option value="people">Titre</option>
+          </select>
+        </div>
+      </div> <!-- end of photograph-content -->
     </main>
     <div id="contact_modal">
 			<div class="modal">
