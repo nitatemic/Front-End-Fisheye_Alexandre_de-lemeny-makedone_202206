@@ -1,17 +1,7 @@
 // eslint-disable-next-line import/extensions
 import photographerFactory from '../factories/photographer.js';
-/**
- * It returns a promise that resolves to an object with a photographers property, which is an array
- * of objects
- * @returns An object with a photographers property.
- */
-export default async function getPhotographers() {
-  const response = await fetch('../../data/photographers.json');
-  const responseObject = JSON.parse(await response.text());
-  const { photographers } = responseObject;
-  /* Returning an object with a property called photographers, which is an array of objects. */
-  return ({ photographers: [...photographers] });
-}
+// eslint-disable-next-line import/extensions
+import fetchData from '../utils/fetchData.js';
 
 /**
      * This function takes in an array of photographer objects and displays them on the page
@@ -34,7 +24,7 @@ async function displayData(photographers) {
  */
 async function init() {
   // Récupère les datas des photographes
-  const { photographers } = await getPhotographers();
+  const { photographers } = await fetchData();
   displayData(photographers);
 }
 
