@@ -1,0 +1,15 @@
+{
+  "name": "Front-End-Fisheye_Alexandre_de-lemeny-makedone_202206",
+  "version": "1.0.0",
+  "description": "Projet 2 OC",
+  "main": "index.js",
+  "repository": "https://github.com/nitatemic/Front-End-Fisheye_Alexandre_de-lemeny-makedone_202206.git",
+  "author": "nitatemic <alexandre@nitatemic.dev>",
+  "license": "MIT",
+  "devDependencies": {
+    "eslint": "^8.17.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.26.0",
+    "hint": "^7.0.1"
+  }
+}
