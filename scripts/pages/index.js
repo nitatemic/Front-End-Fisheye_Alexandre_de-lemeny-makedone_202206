@@ -1,7 +1,7 @@
 // eslint-disable-next-line import/extensions
 import photographerFactory from '../factories/photographer.js';
 // eslint-disable-next-line import/extensions
-import fetchData from '../utils/fetchData.js';
+import { fetchData } from '../utils/fetchData.js';
 
 /**
      * This function takes in an array of photographer objects and displays them on the page

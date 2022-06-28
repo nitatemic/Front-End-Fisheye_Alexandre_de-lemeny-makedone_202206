@@ -51,7 +51,7 @@ export default function photographerFactory(data) {
 
     return (article);
   }
-
+  /* Fonction qui affiche le summary du photographe */
   function getPhotographerSummaryDOM() {
     const summary = document.getElementById('photographer-summary');
     const nameH1 = document.createElement('h1');
