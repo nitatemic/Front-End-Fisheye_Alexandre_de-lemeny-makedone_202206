@@ -13,4 +13,6 @@ fetchPhotographerData(photographerId).then((data) => {
   const photographerModel = photographerFactory(data.photographer);
   const summaryDOM = photographerModel.getPhotographerSummaryDOM();
   container.prepend(summaryDOM);
+  const pictureDOM = photographerModel.getPhotographerPictureDom();
+  container.appendChild(pictureDOM);
 });

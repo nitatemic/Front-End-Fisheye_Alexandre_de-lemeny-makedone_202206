@@ -103,10 +103,16 @@ h1 {
 .photographer-container {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
-    width: 100%;
     font-size: 1.2rem;
     font-weight: 500;
-    padding: 0.5% 0;
+    background-color : #FAFAFA;
+    margin : 0 5% 0 5%;
+    min-height: 20rem;
+}
+
+.img-md {
+    width: 200px;
+    height: 200px;
 }

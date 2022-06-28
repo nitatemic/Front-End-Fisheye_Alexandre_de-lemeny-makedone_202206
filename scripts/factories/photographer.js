@@ -73,5 +73,15 @@ export default function photographerFactory(data) {
     return (summary);
   }
 
-  return { getUserCardDOM, getPhotographerSummaryDOM };
+  function getPhotographerPictureDom() {
+    const img = document.createElement('img');
+    img.setAttribute('src', picture);
+    img.className = 'photographer_picture round cover shadow img-md';
+    img.setAttribute('alt', `Photographie de ${name}`);
+    img.setAttribute('aria-label', `Photographie de ${name}`);
+
+    return (img);
+  }
+
+  return { getUserCardDOM, getPhotographerSummaryDOM, getPhotographerPictureDom };
 }
