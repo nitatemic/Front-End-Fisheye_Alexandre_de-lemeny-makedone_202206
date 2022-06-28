@@ -54,9 +54,22 @@ export default function photographerFactory(data) {
   /* Fonction qui affiche le summary du photographe */
   function getPhotographerSummaryDOM() {
     const summary = document.getElementById('photographer-summary');
+
     const nameH1 = document.createElement('h1');
     nameH1.textContent = name;
+    nameH1.className = 'photographer-name';
     summary.appendChild(nameH1);
+
+    const cityH2 = document.createElement('h2');
+    cityH2.textContent = `${city}, ${country}`;
+    cityH2.className = 'photographer-city';
+    summary.appendChild(cityH2);
+
+    const taglineP = document.createElement('p');
+    taglineP.textContent = tagline;
+    taglineP.className = 'photographer-tagline';
+    summary.appendChild(taglineP);
+
     return (summary);
   }
 

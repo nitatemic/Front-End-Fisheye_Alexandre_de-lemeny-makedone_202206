@@ -9,5 +9,8 @@ console.log(photographerId);
 
 /* Récupérer les données du photographe */
 fetchPhotographerData(photographerId).then((data) => {
-  console.log(data);
+  const container = document.getElementById('photographer-container');
+  const photographerModel = photographerFactory(data.photographer);
+  const summaryDOM = photographerModel.getPhotographerSummaryDOM();
+  container.prepend(summaryDOM);
 });
