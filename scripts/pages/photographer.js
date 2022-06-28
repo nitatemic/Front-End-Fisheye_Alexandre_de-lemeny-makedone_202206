@@ -9,8 +9,5 @@ console.log(photographerId);
 
 /* Récupérer les données du photographe */
 fetchPhotographerData(photographerId).then((data) => {
-  // data est un objet avec les données du photographe
-  const { photographerData, mediaData } = data;
-  console.log(photographerData);
-  console.log(mediaData);
+  console.log(data);
 });

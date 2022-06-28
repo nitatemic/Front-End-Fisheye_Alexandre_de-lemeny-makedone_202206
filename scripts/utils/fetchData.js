@@ -18,16 +18,12 @@ export async function fetchData() {
  * @returns An object with two properties: photographer and media.
  */
 export async function fetchPhotographerData(id) {
-  console.log(id); /* The id is there, in my example it is 243 */
 
   const response = await fetch('../../data/photographers.json');
   const responseObject = JSON.parse(await response.text());
   const { photographers, media } = responseObject;
-  const photographer = photographers.find((photographer) => photographer.id === id);
-  const mediaForPhotographer = media.filter((media) => media.photographerId === id);
-
-  console.log(photographer); /* FIXME: This returns undefined */
-  console.log(mediaForPhotographer); /* FIXME: This returns empty array */
+  const photographer = photographers.find((photographer) => photographer.id === parseInt(id));
+  const mediaForPhotographer = media.filter((media) => media.photographerId === parseInt(id));
 
   return ({ photographer, media: [...mediaForPhotographer] });
 }
