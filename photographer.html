@@ -23,12 +23,14 @@
       <div class="photograph-content">
         <div class="filter">
           <p>Trier par</p>
-          <label for="filter-select"></label>
-          <select id="filter-select" class="filter">
-            <option value="all">Popularité</option>
-            <option value="nature">Date</option>
-            <option value="people">Titre</option>
-          </select>
+          <div class="dropdown">
+            <button class="dropbtn">Popularité</button>
+            <div class="dropdown-content">
+              <a href="#">Date</a>
+              <a href="#">Titre</a>
+            </div>
+            <div class="photographer-media-container" id="photographer-media-container">
+            </div>
         </div>
       </div> <!-- end of photograph-content -->
     </main>

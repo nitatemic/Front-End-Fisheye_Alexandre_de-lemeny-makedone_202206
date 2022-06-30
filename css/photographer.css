@@ -89,22 +89,65 @@ form input {
     font-weight: bold;
     color: #312E2E;
 }
-select {
-    padding: 6% 5% 6% 5%;
-    appearance: none;
-    -moz-appearance: none;
-    -webkit-appearance: none;
-    text-align: center;
-    font-size: 1.3rem;
+
+
+.img-md {
+    width: 200px;
+    height: 200px;
+}
+
+
+.dropbtn {
+    font-size: 20px;
     font-weight: bold;
     color: white;
+    padding: 11px;
+    width: 170px;
+    height: 70px;
     border: none;
-    min-width:fit-content;
     background-color: #901C1C;
     border-radius: 5px;
     cursor: pointer;
-    background-image: url(../assets/icons/angle-down-solid.svg);
-    background-repeat: no-repeat;
-    background-position: right;
-    background-size: 1.5rem;
 }
+
+.dropdown:hover .dropbtn {
+    background-color: #D3573C;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #901C1C;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.dropdown-content a {
+    color: white;
+    width: 170px;
+    text-align: center;
+    padding: 11px 0 11px 0;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background-color: #D3573C
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+
