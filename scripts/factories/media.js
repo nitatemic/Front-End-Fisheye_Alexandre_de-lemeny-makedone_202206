@@ -1,4 +1,5 @@
 export default function mediaFactory(media) {
+
   function filterByPopularity() {
     const mediaCopy = [...media];
     mediaCopy.sort((a, b) => a.likes - b.likes).reverse();
@@ -6,5 +7,12 @@ export default function mediaFactory(media) {
     return mediaCopy;
   }
 
-  return { filterByPopularity };
+  function filterByDate() {
+    const mediaCopy = [...media];
+    mediaCopy.sort((a, b) => a.date - b.date);
+    console.log(mediaCopy);
+    return mediaCopy;
+  }
+
+  return { filterByPopularity, filterByDate };
 }

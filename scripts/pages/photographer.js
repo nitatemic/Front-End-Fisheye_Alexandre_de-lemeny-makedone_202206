@@ -19,5 +19,5 @@ fetchPhotographerData(photographerId).then((data) => {
   container.appendChild(pictureDOM);
   console.log(data.media);
   const mediaArray = mediaFactory(data.media);
-  const sortedArray = mediaArray.filterByPopularity();
+  const sortedArray = mediaArray.filterByDate();
 });
