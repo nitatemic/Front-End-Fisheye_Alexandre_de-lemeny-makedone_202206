@@ -14,5 +14,11 @@ export default function mediaFactory(media) {
     return mediaCopy;
   }
 
-  return { filterByPopularity, filterByDate };
+  function filterByTitle() {
+    const mediaCopy = [...media];
+    mediaCopy.sort((a, b) => a.title.localeCompare(b.title));
+    console.log(mediaCopy);
+    return mediaCopy;
+  }
+  return { filterByPopularity, filterByDate, filterByTitle };
 }
