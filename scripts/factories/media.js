@@ -34,7 +34,7 @@ export default function mediaFactory(media) {
         mediaVideo.setAttribute('controls', 'false');
         mediaVideo.setAttribute('loop', 'false');
         mediaVideo.setAttribute('muted', 'true');
-        mediaVideo.setAttribute('autoplay', 'false');
+        mediaVideo.setAttribute('preload', 'false');
         mediaVideo.removeAttribute('controls');
         mediaPreview.appendChild(mediaVideo);
       } else {
@@ -45,21 +45,24 @@ export default function mediaFactory(media) {
         mediaImage.setAttribute('aria-label', mediaList[i].title);
         mediaPreview.appendChild(mediaImage);
       }
+      const mediaSummary = document.createElement('div');
+      mediaSummary.className = 'media-summary';
       const mediaTitle = document.createElement('h3');
       mediaTitle.textContent = mediaList[i].title;
       mediaTitle.className = 'media-title';
-      mediaPreview.appendChild(mediaTitle);
+      mediaSummary.appendChild(mediaTitle);
       const mediaLike = document.createElement('div');
       mediaLike.className = 'media-like';
-      mediaPreview.appendChild(mediaLike);
-      const mediaLikeIcon = document.createElement('i');
-      mediaLikeIcon.className = 'fas fa-heart';
-      mediaLikeIcon.setAttribute('aria-label', 'J\'aime');
-      mediaLike.appendChild(mediaLikeIcon);
+      mediaSummary.appendChild(mediaLike);
       const mediaLikeCount = document.createElement('span');
       mediaLikeCount.textContent = mediaList[i].likes;
       mediaLikeCount.className = 'media-like-count';
       mediaLike.appendChild(mediaLikeCount);
+      const mediaLikeIcon = document.createElement('i');
+      mediaLikeIcon.className = 'fa-solid fa-heart fa-beat like-icon';
+      mediaLikeIcon.setAttribute('aria-label', 'J\'aime');
+      mediaLike.appendChild(mediaLikeIcon);
+      mediaPreview.appendChild(mediaSummary);
     }
     return mediaContainer;
   }

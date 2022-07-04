@@ -159,21 +159,52 @@ form input {
     flex-wrap: wrap;
     flex-direction: row;
     width: 100%;
+    margin: 3rem 5% 0 5%;
 }
 
-.media-container > * {
+.media-preview {
     flex: 1 0 32%;
     margin: 5px 5px 7% 5px;
     height: auto;
 }
+
+
 .media-image {
     width: 400px;
     height: 350px;
+    border-radius: 10px;
     object-fit: cover;
 }
 
 .media-video {
     width: 400px;
     height: 350px;
+    border-radius: 10px;
     object-fit: cover;
+}
+
+.media-title {
+    width: fit-content;
+    margin: 1rem 0 0 0 ;
+    font-size: 1.3rem;
+    color: #901C1C;
+}
+
+.media-summary {
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 400px;
+}
+
+.like-icon {
+    color: #901C1C;
+    font-size: 1.3rem;
+    --fa-animation-duration: 0s
+}
+
+.like-icon:hover {
+    color: #D3573C;
+    --fa-animation-duration: 1s;
 }
