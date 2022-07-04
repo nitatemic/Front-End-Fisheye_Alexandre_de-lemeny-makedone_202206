@@ -10,7 +10,7 @@ const photographerId = urlParams.get('id');
 console.log(photographerId);
 
 /* Récupérer les données du photographe */
-fetchPhotographerData(photographerId).then((data) => {
+fetchPhotographerData(photographerId).then(async (data) => {
   const container = document.getElementById('photographer-container');
   const photographerModel = photographerFactory(data.photographer);
   const summaryDOM = photographerModel.getPhotographerSummaryDOM();
@@ -19,5 +19,7 @@ fetchPhotographerData(photographerId).then((data) => {
   container.appendChild(pictureDOM);
   console.log(data.media);
   const mediaArray = mediaFactory(data.media);
-  const sortedArray = mediaArray.filterByTitle();
+  const photographerMediaContainer = document.getElementById('photographer-media-container');
+  const mediaDOM = await mediaArray.filterByPopularity();
+  photographerMediaContainer.appendChild(await mediaDOM);
 });

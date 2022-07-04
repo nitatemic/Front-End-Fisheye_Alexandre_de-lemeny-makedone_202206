@@ -140,6 +140,10 @@ form input {
     padding: 11px 0 11px 0;
     text-decoration: none;
     display: block;
+    font-size: 20px;
+    font-weight: bold;
+    border-top : 1px solid white;
+    outline-offset: -5px
 }
 
 .dropdown-content a:hover {
