@@ -82,7 +82,7 @@ export default function mediaFactory(media) {
   function filterByDate() {
     const mediaCopy = [...media];
     mediaCopy.sort((a, b) => a.date - b.date);
-    return mediaCopy;
+    return getMediaDOM(mediaCopy);
   }
 
   /**
@@ -92,7 +92,7 @@ export default function mediaFactory(media) {
   function filterByTitle() {
     const mediaCopy = [...media];
     mediaCopy.sort((a, b) => a.title.localeCompare(b.title));
-    return mediaCopy;
+    return getMediaDOM(mediaCopy);
   }
 
   return { filterByPopularity, filterByDate, filterByTitle };

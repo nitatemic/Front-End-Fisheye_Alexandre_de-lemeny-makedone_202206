@@ -7,6 +7,7 @@ import mediaFactory from '../factories/media.js';
 /* Récupérer l'id du photographe dans l'url */
 const urlParams = new URLSearchParams(window.location.search);
 const photographerId = urlParams.get('id');
+const filter = urlParams.get('filter');
 console.log(photographerId);
 
 /* Récupérer les données du photographe */
@@ -17,10 +18,26 @@ fetchPhotographerData(photographerId).then(async (data) => {
   container.prepend(summaryDOM);
   const pictureDOM = photographerModel.getPhotographerPictureDom();
   container.appendChild(pictureDOM);
-  console.log(data.media);
+
   const mediaArray = mediaFactory(data.media);
   const photographerContainer = document.getElementById('photograph-content');
-  const mediaDOM = await mediaArray.filterByPopularity();
-  console.log(await mediaDOM);
+  let mediaDOM = await mediaArray.filterByPopularity();
+  switch (filter) {
+    case 'popularity':
+      mediaDOM = await mediaArray.filterByPopularity();
+      break;
+
+    case 'date':
+      mediaDOM = await mediaArray.filterByDate();
+      break;
+
+    case 'title':
+      mediaDOM = await mediaArray.filterByTitle();
+      break;
+
+    default:
+      mediaDOM = await mediaArray.filterByPopularity();
+      break;
+  }
   photographerContainer.appendChild(await mediaDOM);
 });
