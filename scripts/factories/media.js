@@ -1,8 +1,13 @@
 export default function mediaFactory(media) {
-  /* Defining the file path according to the photographer. */
+
+  /**
+   * It returns the path to the photographer's picture based on the photographer's ID
+   * @returns The path to the photographer's picture.
+   */
+  // eslint-disable-next-line consistent-return
   function getFilePath() {
     const path = '../assets/photographers_pic';
-    console.log(media[0])
+    // eslint-disable-next-line default-case
     switch (media[0].photographerId) {
       case 82:
         return `${path}/Tracy`;
@@ -20,7 +25,7 @@ export default function mediaFactory(media) {
   }
 
   async function getMediaDOM(mediaList) {
-    const path = await getFilePath();
+    const path = getFilePath();
     const mediaContainer = document.createElement('div');
     mediaContainer.className = 'media-container';
     for (let i = 0; i < mediaList.length; i++) {
@@ -43,6 +48,7 @@ export default function mediaFactory(media) {
         mediaImage.setAttribute('src', `${path}/${mediaList[i].image}`);
         mediaImage.setAttribute('alt', mediaList[i].title);
         mediaImage.setAttribute('aria-label', mediaList[i].title);
+        mediaImage.setAttribute('loading', 'lazy');
         mediaPreview.appendChild(mediaImage);
       }
       const mediaSummary = document.createElement('div');
