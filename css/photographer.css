@@ -154,4 +154,26 @@ form input {
     display: block;
 }
 
+.media-container {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    width: 100%;
+}
 
+.media-container > * {
+    flex: 1 0 32%;
+    margin: 5px 5px 7% 5px;
+    height: auto;
+}
+.media-image {
+    width: 400px;
+    height: 350px;
+    object-fit: cover;
+}
+
+.media-video {
+    width: 400px;
+    height: 350px;
+    object-fit: cover;
+}

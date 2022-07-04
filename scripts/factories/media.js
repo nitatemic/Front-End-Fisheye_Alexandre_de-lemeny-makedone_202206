@@ -1,8 +1,26 @@
 export default function mediaFactory(media) {
-  /* Fonction qui créer les previews des photos et vidéos, avec le titre et le nombre de likes */
+  /* Defining the file path according to the photographer. */
+  function getFilePath() {
+    const path = '../assets/photographers_pic';
+    console.log(media[0])
+    switch (media[0].photographerId) {
+      case 82:
+        return `${path}/Tracy`;
+      case 195:
+        return `${path}/Marcel`;
+      case 243:
+        return `${path}/Mimi`;
+      case 527:
+        return `${path}/Nabeel`;
+      case 925:
+        return `${path}/Rhode`;
+      case 930:
+        return `${path}/Ellie-Rose`;
+    }
+  }
 
-  function getMediaDOM(mediaList) {
-    console.log(mediaList);
+  async function getMediaDOM(mediaList) {
+    const path = await getFilePath();
     const mediaContainer = document.createElement('div');
     mediaContainer.className = 'media-container';
     for (let i = 0; i < mediaList.length; i++) {
@@ -10,19 +28,19 @@ export default function mediaFactory(media) {
       mediaPreview.className = 'media-preview';
       mediaContainer.appendChild(mediaPreview);
       if (mediaList[i].image === undefined) {
-        console.log(mediaList[i].image);
         const mediaVideo = document.createElement('video');
         mediaVideo.className = 'media-video';
-        mediaVideo.setAttribute('src', mediaList[i].video);
+        mediaVideo.setAttribute('src', `${path}/${mediaList[i].video}`);
         mediaVideo.setAttribute('controls', 'false');
         mediaVideo.setAttribute('loop', 'false');
         mediaVideo.setAttribute('muted', 'true');
         mediaVideo.setAttribute('autoplay', 'false');
+        mediaVideo.removeAttribute('controls');
         mediaPreview.appendChild(mediaVideo);
       } else {
         const mediaImage = document.createElement('img');
         mediaImage.className = 'media-image';
-        mediaImage.setAttribute('src', mediaList[i].image);
+        mediaImage.setAttribute('src', `${path}/${mediaList[i].image}`);
         mediaImage.setAttribute('alt', mediaList[i].title);
         mediaImage.setAttribute('aria-label', mediaList[i].title);
         mediaPreview.appendChild(mediaImage);
@@ -46,25 +64,36 @@ export default function mediaFactory(media) {
     return mediaContainer;
   }
 
+  /**
+   * We're creating a copy of the media array, sorting it by likes, and then returning the DOM
+   * elements for the sorted array
+   * @returns the getMediaDOM function.
+   */
   async function filterByPopularity() {
     const mediaCopy = [...media];
     mediaCopy.sort((a, b) => a.likes - b.likes).reverse();
-    console.log(mediaCopy);
     return getMediaDOM(mediaCopy);
   }
 
+  /**
+   * It creates a copy of the media array, sorts the copy by date, and returns the copy
+   * @returns The mediaCopy array is being returned.
+   */
   function filterByDate() {
     const mediaCopy = [...media];
     mediaCopy.sort((a, b) => a.date - b.date);
-    console.log(mediaCopy);
     return mediaCopy;
   }
 
+  /**
+   * It creates a copy of the media array, sorts the copy by title, and returns the copy
+   * @returns The mediaCopy array is being returned.
+   */
   function filterByTitle() {
     const mediaCopy = [...media];
     mediaCopy.sort((a, b) => a.title.localeCompare(b.title));
-    console.log(mediaCopy);
     return mediaCopy;
   }
+
   return { filterByPopularity, filterByDate, filterByTitle };
 }

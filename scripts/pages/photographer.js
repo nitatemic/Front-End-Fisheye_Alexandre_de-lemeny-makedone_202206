@@ -19,7 +19,8 @@ fetchPhotographerData(photographerId).then(async (data) => {
   container.appendChild(pictureDOM);
   console.log(data.media);
   const mediaArray = mediaFactory(data.media);
-  const photographerMediaContainer = document.getElementById('photographer-media-container');
+  const photographerContainer = document.getElementById('photograph-content');
   const mediaDOM = await mediaArray.filterByPopularity();
-  photographerMediaContainer.appendChild(await mediaDOM);
+  console.log(await mediaDOM);
+  photographerContainer.appendChild(await mediaDOM);
 });

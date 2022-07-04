@@ -47,7 +47,6 @@ h1 {
 .photographer_section {
     display: flex;
     flex-wrap: wrap;
-
 }
 
 .photographer_section article {

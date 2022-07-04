@@ -9,7 +9,7 @@ export default function photographerFactory(data) {
     name, id, city, country, tagline, price, portrait, media
   } = data;
 
-  const picture = `../assets/photographers_pic/${portrait}`;
+  const picture = `../assets/photographers/${portrait}`;
 
   function getUserCardDOM() {
     const article = document.createElement('article');
