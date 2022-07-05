@@ -185,13 +185,19 @@ form input {
 
 .media-title {
     width: fit-content;
-    margin: 1rem 0 0 0 ;
+    margin: 0 0 0 0 ;
+    font-size: 1.3rem;
+    color: #901C1C;
+}
+
+.media-like-count {
     font-size: 1.3rem;
     color: #901C1C;
 }
 
 .media-summary {
     display:flex;
+    margin: 1rem 0 0 0;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
