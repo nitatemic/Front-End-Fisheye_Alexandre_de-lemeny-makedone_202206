@@ -40,6 +40,8 @@ export default function mediaFactory(media) {
         mediaVideo.setAttribute('loop', 'false');
         mediaVideo.setAttribute('muted', 'true');
         mediaVideo.setAttribute('preload', 'false');
+        mediaVideo.setAttribute('alt', `Miniature de la vidéo de ${mediaList[i].title}`);
+        mediaVideo.setAttribute('title', `Miniature de la vidéo de ${mediaList[i].title}`);
         mediaVideo.removeAttribute('controls');
         mediaPreview.appendChild(mediaVideo);
       } else {
