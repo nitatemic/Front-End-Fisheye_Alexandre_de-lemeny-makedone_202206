@@ -159,12 +159,11 @@ form input {
     flex-wrap: wrap;
     flex-direction: row;
     width: 100%;
-    margin: 3rem 5% 0 5%;
+    justify-content: space-around;
 }
 
 .media-preview {
-    flex: 1 0 32%;
-    margin: 5px 5px 7% 5px;
+    margin: 2rem;
     height: auto;
 }
 
@@ -197,11 +196,11 @@ form input {
 
 .media-summary {
     display:flex;
-    margin: 1rem 0 0 0;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    width: 400px;
+    width: 100%;
+
 }
 
 .like-icon {
@@ -213,4 +212,12 @@ form input {
 .like-icon:hover {
     color: #D3573C;
     --fa-animation-duration: 1s;
+}
+
+main {
+    width: 100%;
+}
+
+.photographer-content {
+    margin : 0 5% 0 5%;
 }
