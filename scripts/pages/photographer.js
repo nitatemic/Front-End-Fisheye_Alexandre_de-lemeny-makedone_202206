@@ -23,10 +23,6 @@ fetchPhotographerData(photographerId).then(async (data) => {
   const photographerContainer = document.getElementById('photograph-content');
   let mediaDOM = await mediaArray.filterByPopularity();
   switch (filter) {
-    case 'popularity':
-      mediaDOM = await mediaArray.filterByPopularity();
-      break;
-
     case 'date':
       mediaDOM = await mediaArray.filterByDate();
       break;
