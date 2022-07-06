@@ -21,18 +21,44 @@ fetchPhotographerData(photographerId).then(async (data) => {
 
   const mediaArray = mediaFactory(data.media);
   const photographerContainer = document.getElementById('photograph-content');
-  let mediaDOM = await mediaArray.filterByPopularity();
+  let mediaDOM = '';
+  const dropbtn1 = document.getElementById('dropdown-btn-first');
+  const dropbtn2 = document.getElementById('dropdown-btn-second');
+  const dropbtn3 = document.getElementById('dropdown-btn-third');
   switch (filter) {
     case 'date':
       mediaDOM = await mediaArray.filterByDate();
+      dropbtn1.innerText = 'Date';
+      dropbtn1.setAttribute('aria-label', 'Trié par date');
+      dropbtn2.innerText = 'Popularité';
+      dropbtn2.setAttribute('href', `?id=${photographerId}&filter=popularity`);
+      dropbtn2.setAttribute('aria-label', 'Trier par popularité');
+      dropbtn3.innerText = 'Titre';
+      dropbtn3.setAttribute('href', `?id=${photographerId}&filter=title`);
+      dropbtn3.setAttribute('aria-label', 'Trier par titre');
       break;
 
     case 'title':
       mediaDOM = await mediaArray.filterByTitle();
+      dropbtn1.innerText = 'Titre';
+      dropbtn1.setAttribute('aria-label', 'Trié par titre');
+      dropbtn2.innerText = 'Popularité';
+      dropbtn2.setAttribute('href', `?id=${photographerId}&filter=popularity`);
+      dropbtn2.setAttribute('aria-label', 'Trier par popularité');
+      dropbtn3.innerText = 'Date';
+      dropbtn3.setAttribute('href', `?id=${photographerId}&filter=date`);
+      dropbtn3.setAttribute('aria-label', 'Trier par date');
       break;
 
     default:
       mediaDOM = await mediaArray.filterByPopularity();
+      dropbtn1.setAttribute('aria-label', 'Trié par popularité');
+      dropbtn2.innerText = 'Date';
+      dropbtn2.setAttribute('href', `?id=${photographerId}&filter=date`);
+      dropbtn2.setAttribute('aria-label', 'Trier par date');
+      dropbtn3.innerText = 'Titre';
+      dropbtn3.setAttribute('href', `?id=${photographerId}&filter=title`);
+      dropbtn3.setAttribute('aria-label', 'Trier par titre');
       break;
   }
   photographerContainer.appendChild(await mediaDOM);
