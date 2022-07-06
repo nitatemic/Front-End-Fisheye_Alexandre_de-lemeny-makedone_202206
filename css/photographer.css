@@ -208,6 +208,7 @@ form input {
 
 .media-like-count {
     font-size: 1.3rem;
+    margin : 0 .5rem 0 0;
     color: #901C1C;
 }
 

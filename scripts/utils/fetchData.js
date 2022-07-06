@@ -10,7 +10,6 @@ export async function fetchData() {
   return ({ photographers: [...photographers], media: [...media] });
 }
 
-/* FIXME: This function return undefined */
 /**
  * It fetches the photographers.json file, parses it, and returns an object containing the
  * photographer with the given id and all media associated with that photographer

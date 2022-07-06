@@ -8,7 +8,6 @@ import mediaFactory from '../factories/media.js';
 const urlParams = new URLSearchParams(window.location.search);
 const photographerId = urlParams.get('id');
 const filter = urlParams.get('filter');
-console.log(photographerId);
 
 /* Récupérer les données du photographe */
 fetchPhotographerData(photographerId).then(async (data) => {
