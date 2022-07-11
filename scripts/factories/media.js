@@ -1,31 +1,8 @@
+import { getFilePath } from '../utils/getFilePath.js';
+
 export default function mediaFactory(media) {
-
-  /**
-   * It returns the path to the photographer's picture based on the photographer's ID
-   * @returns The path to the photographer's picture.
-   */
-  // eslint-disable-next-line consistent-return
-  function getFilePath() {
-    const path = '../assets/photographers_pic';
-    // eslint-disable-next-line default-case
-    switch (media[0].photographerId) {
-      case 82:
-        return `${path}/Tracy`;
-      case 195:
-        return `${path}/Marcel`;
-      case 243:
-        return `${path}/Mimi`;
-      case 527:
-        return `${path}/Nabeel`;
-      case 925:
-        return `${path}/Rhode`;
-      case 930:
-        return `${path}/Ellie-Rose`;
-    }
-  }
-
   async function getMediaDOM(mediaList) {
-    const path = getFilePath();
+    const path = getFilePath(media);
     const mediaContainer = document.createElement('div');
     mediaContainer.className = 'media-container';
     for (let i = 0; i < mediaList.length; i++) {
