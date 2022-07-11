@@ -4,10 +4,17 @@ import { fetchPhotographerData } from '../utils/fetchData.js';
 import photographerFactory from '../factories/photographer.js';
 // eslint-disable-next-line import/extensions
 import mediaFactory from '../factories/media.js';
+// eslint-disable-next-line import/extensions
+import { openLightbox } from '../utils/lightbox.js';
+
 /* Récupérer l'id du photographe dans l'url */
 const urlParams = new URLSearchParams(window.location.search);
 const photographerId = urlParams.get('id');
 const filter = urlParams.get('filter');
+
+if (urlParams.get('showMedia') === 'true') {
+  openLightbox();
+}
 
 /* Récupérer les données du photographe */
 fetchPhotographerData(photographerId).then(async (data) => {

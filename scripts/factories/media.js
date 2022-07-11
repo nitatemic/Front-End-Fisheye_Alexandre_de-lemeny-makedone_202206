@@ -1,8 +1,10 @@
+// eslint-disable-next-line import/extensions
 import { getFilePath } from '../utils/getFilePath.js';
+import { openLightbox } from '../utils/lightbox.js';
 
 export default function mediaFactory(media) {
   async function getMediaDOM(mediaList) {
-    const path = getFilePath(media);
+    const path = getFilePath(media[0]);
     const mediaContainer = document.createElement('div');
     mediaContainer.className = 'media-container';
     for (let i = 0; i < mediaList.length; i++) {
@@ -28,8 +30,14 @@ export default function mediaFactory(media) {
         mediaImage.setAttribute('alt', mediaList[i].title);
         mediaImage.setAttribute('aria-label', mediaList[i].title);
         mediaImage.setAttribute('loading', 'lazy');
+        /* Ajouter un event listener sur l'image pour afficher la lightbox */
+        mediaImage.addEventListener('click', () => {
+          const lightbox = openLightbox(mediaList[i], false);
+          document.body.appendChild(lightbox);
+        });
         mediaPreview.appendChild(mediaImage);
       }
+
       const mediaSummary = document.createElement('div');
       mediaSummary.className = 'media-summary';
       const mediaTitle = document.createElement('h3');

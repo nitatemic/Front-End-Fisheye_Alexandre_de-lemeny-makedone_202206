@@ -26,3 +26,10 @@ export async function fetchPhotographerData(id) {
 
   return ({ photographer, media: [...mediaForPhotographer] });
 }
+
+export async function fetchMediaData(id) {
+  const response = await fetch('../../data/photographers.json');
+  const responseObject = JSON.parse(await response.text());
+  const media = responseObject.media.filter((media) => media.id === parseInt(id));
+  return ({ media: [...media] });
+}

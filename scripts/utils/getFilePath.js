@@ -5,7 +5,7 @@
 export function getFilePath(media) {
   const path = '../assets/photographers_pic';
   // eslint-disable-next-line default-case
-  switch (media[0].photographerId) {
+  switch (media.photographerId) {
     case 82:
       return `${path}/Tracy`;
     case 195:

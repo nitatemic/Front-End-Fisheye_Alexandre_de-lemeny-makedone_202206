@@ -1,13 +1,16 @@
+import { getFilePath } from './getFilePath.js';
+
 /* Fonction qui appel la lightbox quand on clic sur un media */
-function openLightbox(e) {
-  /* Récupérer l'id du media dans l'url */
-  const urlParams = new URLSearchParams(window.location.search);
-  const mediaId = urlParams.get('mediaId');
-  const video = urlParams.get('video'); /* Boolean */
+export function openLightbox(media, video) {
+
+  /* Générate lightbox */
+  const lightbox = createLightbox(media, video);
+  document.body.appendChild(lightbox);
 }
 
 /* Fonction qui créer une lightbox et retourne le DOM de la lightbox */
 function createLightbox(media, video) {
+  const path = getFilePath(media);
   const lightbox = document.createElement('div');
   lightbox.classList.add('lightbox');
   lightbox.setAttribute('id', 'lightbox');
@@ -42,19 +45,20 @@ function createLightbox(media, video) {
     lightboxContent.appendChild(videoContainer);
 
     const mediaVideo = document.createElement('video');
-	  mediaVideo.setAttribute('controls', '');
+    mediaVideo.setAttribute('controls', '');
 	  mediaVideo.setAttribute('autoplay', '');
 	  mediaVideo.setAttribute('loop', '');
 	  mediaVideo.setAttribute('muted', '');
 	  mediaVideo.setAttribute('playsinline', '');
 	  mediaVideo.setAttribute('preload', 'auto');
-	  mediaVideo.setAttribute('src', media.video);
-    videoContainer.appendChild(video);
+	  mediaVideo.setAttribute('src', `${path}/${media.video}`);
+    videoContainer.appendChild(mediaVideo);
+  } else {
+    const mediaImage = document.createElement('img');
+    mediaImage.setAttribute('src', `${path}/${media.image}`);
+    mediaImage.setAttribute('alt', media.title);
+    lightboxContent.appendChild(mediaImage);
   }
-	else {
-		const mediaImage = document.createElement('img');
-		mediaImage.setAttribute('src', media.image);
-		mediaImage.setAttribute('alt', media.title);
-		lightboxContent.appendChild(mediaImage);
-  }
+
+  return lightbox;
 }
