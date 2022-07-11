@@ -7,8 +7,8 @@ export function createLightbox(media, video) {
   lightbox.classList.add('lightbox');
   lightbox.setAttribute('id', 'lightbox');
 
-  const lightboxClose = document.createElement('button');
-  lightboxClose.setAttribute('class', 'lightbox-close fa-solid fa-xmark-large');
+  const lightboxClose = document.createElement('i');
+  lightboxClose.setAttribute('class', 'lightbox-close fa-solid fa-xmark');
   lightboxClose.setAttribute('aria-label', 'Fermer la lightbox');
   lightboxClose.addEventListener('click', () => {
     lightbox.remove();
