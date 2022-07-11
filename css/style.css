@@ -17,7 +17,6 @@ header {
     flex-wrap: wrap;
 }
 
-/* Si l'écran est étroit place "Nos photographes en dessous du logo */
 @media screen and (max-width: 600px) {
     header {
         flex-direction: column;
