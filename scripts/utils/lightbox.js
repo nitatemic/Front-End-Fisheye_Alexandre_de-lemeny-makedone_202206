@@ -1,40 +1,33 @@
 import { getFilePath } from './getFilePath.js';
 
-/* Fonction qui appel la lightbox quand on clic sur un media */
-export function openLightbox(media, video) {
-
-  /* Générate lightbox */
-  const lightbox = createLightbox(media, video);
-  document.body.appendChild(lightbox);
-}
-
 /* Fonction qui créer une lightbox et retourne le DOM de la lightbox */
-function createLightbox(media, video) {
+export function createLightbox(media, video) {
   const path = getFilePath(media);
   const lightbox = document.createElement('div');
   lightbox.classList.add('lightbox');
   lightbox.setAttribute('id', 'lightbox');
 
   const lightboxClose = document.createElement('button');
-  lightboxClose.classList.add('lightbox-close');
+  lightboxClose.setAttribute('class', 'lightbox-close fa-solid fa-xmark-large');
+  lightboxClose.setAttribute('aria-label', 'Fermer la lightbox');
+  lightboxClose.addEventListener('click', () => {
+    lightbox.remove();
+  });
   lightboxClose.setAttribute('id', 'lightbox-close');
-  lightboxClose.innerText = '<i class="fa-solid fa-xmark-large"></i>';
   lightbox.appendChild(lightboxClose);
 
-  const lightboxPrev = document.createElement('button');
-  lightboxPrev.classList.add('lightbox-prev');
+  const lightboxPrev = document.createElement('i');
+  lightboxPrev.setAttribute('class', 'lightbox-prev fa-solid fa-chevron-left');
   lightboxPrev.setAttribute('id', 'lightbox-prev');
-  lightboxPrev.innerText = '<i class="fa-solid fa-chevron-left"></i>';
   lightbox.appendChild(lightboxPrev);
 
-  const lightboxNext = document.createElement('button');
-  lightboxNext.classList.add('lightbox-next');
+  const lightboxNext = document.createElement('i');
+  lightboxNext.setAttribute('class', 'lightbox-next fa-solid fa-chevron-right');
   lightboxNext.setAttribute('id', 'lightbox-next');
-  lightboxNext.innerText = '<i class="fa-solid fa-chevron-right"></i>';
   lightbox.appendChild(lightboxNext);
 
   const lightboxContent = document.createElement('div');
-  lightboxContent.classList.add('lightbox-content');
+  lightboxContent.classList.add('lightbox-container');
   lightboxContent.setAttribute('id', 'lightbox-content');
   lightbox.appendChild(lightboxContent);
 
