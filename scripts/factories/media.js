@@ -59,6 +59,16 @@ export default function mediaFactory(media) {
       const mediaLikeIcon = document.createElement('i');
       mediaLikeIcon.className = 'fa-solid fa-heart fa-beat like-icon';
       mediaLikeIcon.setAttribute('aria-label', 'J\'aime');
+      let liked = false;
+      mediaLikeIcon.addEventListener('click', () => {
+        if (!liked) {
+          mediaLikeCount.textContent = parseInt(mediaLikeCount.textContent) + 1;
+          liked = true;
+        } else {
+          mediaLikeCount.textContent = parseInt(mediaLikeCount.textContent) - 1;
+          liked = false
+        }
+      });
       mediaLike.appendChild(mediaLikeIcon);
       mediaPreview.appendChild(mediaSummary);
     }
