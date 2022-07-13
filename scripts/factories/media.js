@@ -63,10 +63,12 @@ export default function mediaFactory(media) {
       mediaLikeIcon.addEventListener('click', () => {
         if (!liked) {
           mediaLikeCount.textContent = parseInt(mediaLikeCount.textContent) + 1;
+          mediaLikeIcon.classList.add('red');
           liked = true;
         } else {
           mediaLikeCount.textContent = parseInt(mediaLikeCount.textContent) - 1;
-          liked = false
+          mediaLikeIcon.classList.remove('red');
+          liked = false;
         }
       });
       mediaLike.appendChild(mediaLikeIcon);

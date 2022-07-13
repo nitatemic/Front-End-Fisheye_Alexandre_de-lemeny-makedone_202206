@@ -240,6 +240,10 @@ form input {
     --fa-animation-duration: 0s
 }
 
+.red {
+    color: red;
+}
+
 .like-icon:hover {
     color: #D3573C;
     --fa-animation-duration: 1s;
