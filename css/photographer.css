@@ -98,7 +98,7 @@ form input {
     justify-content: flex-start;
     align-items: center;
     flex-wrap: nowrap;
-    max-width: 50%;
+    max-width: 25%;
 }
 
 .filter {
@@ -328,9 +328,15 @@ main {
         justify-content: center;
         flex-wrap: wrap;
     }
+}
 
+@media screen and (max-width:1031px) {
     .filter-container {
         margin : 1rem 1rem 0 1rem;
         max-width: 100%;
+    }
+
+    .filter {
+        justify-content: center;
     }
 }
