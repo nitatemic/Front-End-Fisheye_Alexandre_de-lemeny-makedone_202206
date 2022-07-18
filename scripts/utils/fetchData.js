@@ -25,7 +25,8 @@ export async function fetchPhotographerData(id) {
   const mediaForPhotographer = media.filter((media) => media.photographerId === parseInt(id));
 
   let totalLikes = 0;
-  media.forEach((media) => {
+  /* For every media with the same photographerId, we add the likes to the totalLikes variable. */
+  mediaForPhotographer.forEach((media) => {
     totalLikes += media.likes;
   });
 
