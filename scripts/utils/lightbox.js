@@ -1,10 +1,10 @@
 import { getFilePath } from './getFilePath.js';
 
 /* Fonction qui créer une lightbox et retourne le DOM de la lightbox */
-export function createLightbox(media, video) {
-  const path = getFilePath(media);
+export function createLightbox(mediaList, video) {
+  const path = getFilePath(mediaList[0]);
   const lightbox = document.createElement('div');
-  lightbox.classList.add('lightbox');
+  lightbox.classList.add('overlay');
   lightbox.setAttribute('id', 'lightbox');
 
   const lightboxClose = document.createElement('i');

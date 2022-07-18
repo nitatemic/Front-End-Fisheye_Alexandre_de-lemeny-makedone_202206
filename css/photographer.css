@@ -1,5 +1,6 @@
 #contact_modal {
     display: none;
+    z-index: 4;
 }
 
 .photograph-header {
@@ -29,7 +30,7 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    z-index: 1;
+    z-index: 4;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -257,7 +258,7 @@ main {
     margin : 0 5% 0 5%;
 }
 
-.lightbox {
+.overlay {
     position : fixed;
     top : 0;
     left : 0;
@@ -327,6 +328,54 @@ main {
     border-radius: 5px;
 }
 
+.photographer-price-and-like {
+    position: fixed;
+    bottom: 0;
+    right: 2%;
+    width: fit-content;
+    height: 5%;
+    background-color: #D3573C;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 0 0 0;
+    padding: .5rem 2rem .5rem 2rem;
+    border-radius: 5px;
+}
+
+
+#photographer-likes-container,
+#photographer-price-container {
+    margin: .5rem
+
+}
+#photographer-likes-container {
+    display: inline-flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+    flex-wrap: nowrap;
+}
+
+#photographer-price-container {
+    display: inline-flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+    flex-wrap: nowrap;
+}
+
+#photographer-likes, #photographer-price {
+    font-size: 1.3rem;
+    white-space: nowrap;
+}
 @media screen and (max-width: 600px) {
     .photographer-container {
         display: flex;

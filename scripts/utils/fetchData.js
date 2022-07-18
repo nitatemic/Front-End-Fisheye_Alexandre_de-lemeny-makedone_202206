@@ -24,12 +24,10 @@ export async function fetchPhotographerData(id) {
   const photographer = photographers.find((photographer) => photographer.id === parseInt(id));
   const mediaForPhotographer = media.filter((media) => media.photographerId === parseInt(id));
 
-  return ({ photographer, media: [...mediaForPhotographer] });
-}
+  let totalLikes = 0;
+  media.forEach((media) => {
+    totalLikes += media.likes;
+  });
 
-export async function fetchMediaData(id) {
-  const response = await fetch('../../data/photographers.json');
-  const responseObject = JSON.parse(await response.text());
-  const media = responseObject.media.filter((media) => media.id === parseInt(id));
-  return ({ media: [...media] });
+  return ({ photographer, media: [...mediaForPhotographer], totalLikes});
 }

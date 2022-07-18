@@ -4,6 +4,10 @@
 function displayModal() {
   const modal = document.getElementById('contact_modal');
   modal.style.display = 'block';
+  const overlay = document.createElement('div');
+  overlay.classList.add('overlay');
+  overlay.setAttribute('id', 'contactOverlay');
+  document.body.appendChild(overlay);
 }
 
 /**
@@ -12,4 +16,5 @@ function displayModal() {
 function closeModal() {
   const modal = document.getElementById('contact_modal');
   modal.style.display = 'none';
+  document.getElementById('contactOverlay').remove();
 }
