@@ -18,3 +18,10 @@ function closeModal() {
   modal.style.display = 'none';
   document.getElementById('contactOverlay').remove();
 }
+
+/* If user push 'esc' key when modal is open, close the modal */
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') {
+    closeModal();
+  }
+});
