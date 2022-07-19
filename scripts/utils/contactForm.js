@@ -25,3 +25,16 @@ document.addEventListener('keydown', (e) => {
     closeModal();
   }
 });
+
+/* When I click on submit button, send the form */
+document.getElementById('contact_submit').addEventListener('click', (e) => {
+  e.preventDefault();
+  const form = document.getElementById('contact_form');
+  const formData = new FormData(form);
+  const data = {};
+  formData.forEach((value, key) => {
+    data[key] = value;
+  });
+  console.log(data);
+  closeModal();
+});

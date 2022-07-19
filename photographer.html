@@ -44,7 +44,7 @@
           <h2>Contactez-moi</h2>
           <img src="assets/icons/close.svg" onclick="closeModal()"  alt="Bouton en forme de croix" aria-label="Fermer le formulaire de contact."/>
         </header>
-				<form> <!-- Contact form -->
+				<form id="contact_form"> <!-- Contact form -->
 					<div>
 						<label for="firstname">Prénom</label>
             <input type="text" name="firstname" id="firstname" autocomplete="given-name" placeholder="Votre prénom" />
@@ -55,7 +55,7 @@
             <label for="message">Message</label>
             <textarea name="message" id="message" placeholder="Votre message"></textarea>
 					</div>
-          <button type="submit" class="contact_button">Envoyer</button>
+          <button type="submit" class="contact_button" id="contact_submit">Envoyer</button>
 				</form>
 			</div>
       <div class="photographer-price"></div>
