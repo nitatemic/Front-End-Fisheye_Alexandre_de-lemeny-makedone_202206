@@ -16,7 +16,9 @@ function displayModal() {
 function closeModal() {
   const modal = document.getElementById('contact_modal');
   modal.style.display = 'none';
-  document.getElementById('contactOverlay').remove();
+  if (document.getElementById('contactOverlay')) {
+    document.getElementById('contactOverlay').remove();
+  }
 }
 
 /* If user push 'esc' key when modal is open, close the modal */

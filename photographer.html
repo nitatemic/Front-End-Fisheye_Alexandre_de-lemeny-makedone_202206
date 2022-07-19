@@ -35,9 +35,25 @@
             </div>
           </div>
         </div>
-
       </div> <!-- end of photograph-content -->
     </main>
+    <!-- Lightbox with close, next and previous buttons -->
+    <dialog class="lightbox" id="lightbox">
+      <div class="lightbox-content">
+        <div class="lightbox-close">
+          <a class="lightbox-close-button" id="lightbox-close-button" type="button"><i class="fa-solid fa-xmark"></i></a>
+        </div>
+        <div class="lightbox-next">
+          <a class="lightbox-next-button" id="lightbox-next-button" type="button"><i class="fa-solid fa-chevron-right"></i></a>
+        </div>
+        <div class="lightbox-previous">
+          <a class="lightbox-previous-button" id="lightbox-previous-button" type="button"><i class="fa-solid fa-chevron-left"></i></a>
+        </div>
+        <div class="lightbox-media-container" id="lightbox-media-container">
+          <h1 class="lightbox-media-title" id="lightbox-media-title"></h1>
+        </div>
+      </div>
+    </dialog>
     <div id="contact_modal">
 			<div class="modal">
 				<header id="photographer-header">

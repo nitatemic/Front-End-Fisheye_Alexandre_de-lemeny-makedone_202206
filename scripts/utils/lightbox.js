@@ -1,57 +1,125 @@
 import { getFilePath } from './getFilePath.js';
 
-/* Fonction qui créer une lightbox et retourne le DOM de la lightbox */
-export function createLightbox(mediaList, video) {
-  const path = getFilePath(mediaList[0]);
-  const lightbox = document.createElement('div');
-  lightbox.classList.add('overlay');
-  lightbox.setAttribute('id', 'lightbox');
+export default function lightboxFactory(mediaList, mediaId) {
+  let index = 0;
 
-  const lightboxClose = document.createElement('i');
-  lightboxClose.setAttribute('class', 'lightbox-close fa-solid fa-xmark');
-  lightboxClose.setAttribute('aria-label', 'Fermer la lightbox');
-  lightboxClose.addEventListener('click', () => {
-    lightbox.remove();
-  });
-  lightboxClose.setAttribute('id', 'lightbox-close');
-  lightbox.appendChild(lightboxClose);
-
-  const lightboxPrev = document.createElement('i');
-  lightboxPrev.setAttribute('class', 'lightbox-prev fa-solid fa-chevron-left');
-  lightboxPrev.setAttribute('id', 'lightbox-prev');
-  lightbox.appendChild(lightboxPrev);
-
-  const lightboxNext = document.createElement('i');
-  lightboxNext.setAttribute('class', 'lightbox-next fa-solid fa-chevron-right');
-  lightboxNext.setAttribute('id', 'lightbox-next');
-  lightbox.appendChild(lightboxNext);
-
-  const lightboxContent = document.createElement('div');
-  lightboxContent.classList.add('lightbox-container');
-  lightboxContent.setAttribute('id', 'lightbox-content');
-  lightbox.appendChild(lightboxContent);
-
-  if (video === true) {
-    const videoContainer = document.createElement('div');
-    videoContainer.classList.add('video-container');
-    videoContainer.setAttribute('id', 'video-container');
-    lightboxContent.appendChild(videoContainer);
-
-    const mediaVideo = document.createElement('video');
-    mediaVideo.setAttribute('controls', '');
-	  mediaVideo.setAttribute('autoplay', '');
-	  mediaVideo.setAttribute('loop', '');
-	  mediaVideo.setAttribute('muted', '');
-	  mediaVideo.setAttribute('playsinline', '');
-	  mediaVideo.setAttribute('preload', 'auto');
-	  mediaVideo.setAttribute('src', `${path}/${media.video}`);
-    videoContainer.appendChild(mediaVideo);
-  } else {
-    const mediaImage = document.createElement('img');
-    mediaImage.setAttribute('src', `${path}/${media.image}`);
-    mediaImage.setAttribute('alt', media.title);
-    lightboxContent.appendChild(mediaImage);
+  function clear() {
+    const lightboxMediaContainer = document.getElementById('lightbox-media-container');
+    lightboxMediaContainer.innerHTML = '';
   }
 
-  return lightbox;
+  function closeLightbox() {
+    /* Enable the scrollbar */
+    document.body.style.overflow = 'auto';
+    /* Hide the lightbox */
+    document.getElementById('lightbox').classList.remove('show');
+    const lightboxDom = document.getElementById('lightbox');
+    clear();
+    lightboxDom.close();
+  }
+
+  /* Fonction qui affiche la lightbox */
+  function show() {
+    /* Disable scroll */
+    document.body.style.overflow = 'hidden';
+    /* Show the lightbox */
+    document.getElementById('lightbox').classList.add('show');
+    const lightboxDom = document.getElementById('lightbox');
+    /* Search index of media in mediaList */
+    index = mediaList.findIndex((media) => media.id === mediaId);
+    updateLightbox();
+    lightboxDom.show();
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') {
+        closeLightbox();
+      }
+    });
+  }
+
+  function updateLightbox() {
+    const path = getFilePath(mediaList[0]);
+    /* Search media with the given index in mediaList */
+    const media = mediaList[index];
+    /* Is a pic or a video */
+    let mediaType = media.image === undefined ? 'video' : 'image';
+    let lightboxMedia = null;
+    switch (mediaType) {
+      case 'image':
+        lightboxMedia = document.createElement('img');
+        lightboxMedia.className = 'lightbox-media';
+        lightboxMedia.setAttribute('src', `${path}/${media.image}`);
+        lightboxMedia.setAttribute('alt', media.title);
+        lightboxMedia.setAttribute('aria-label', media.title);
+        break;
+
+      case 'video':
+        lightboxMedia = document.createElement('video');
+        lightboxMedia.className = 'lightbox-media';
+        lightboxMedia.setAttribute('src', `${path}/${media.video}`);
+        lightboxMedia.setAttribute('controls', 'true');
+        lightboxMedia.setAttribute('loop', 'false');
+        lightboxMedia.setAttribute('muted', 'false');
+        lightboxMedia.setAttribute('preload', 'true');
+        lightboxMedia.setAttribute('alt', `Miniature de la vidéo de ${media.title}`);
+        lightboxMedia.setAttribute('title', `Miniature de la vidéo de ${media.title}`);
+        break;
+    }
+    if (document.getElementById('lightbox-media-container').firstChild !== document.getElementById('lightbox-media-title')) {
+      clear();
+    }
+    /* Attach media to lightbox */
+    const lightboxMediaContainer = document.getElementById('lightbox-media-container');
+    lightboxMediaContainer.prepend(lightboxMedia);
+    /* Attach media title to lightbox */
+    const lightboxTitle = document.createElement('h1');
+    lightboxTitle.id = 'lightbox-media-title';
+    lightboxTitle.textContent = media.title;
+    lightboxMediaContainer.append(lightboxTitle);
+  }
+
+  /**
+   * The next function increments the index by one, and then uses the modulo operator to loop through
+   * the mediaList array.
+   */
+  function next() {
+    /* It's a modulo operation. It's a way to loop through an array. */
+    index = (index + 1) % mediaList.length;
+    updateLightbox(mediaList, mediaId);
+  }
+
+  /**
+   * It subtracts one from the index, and if the result is less than zero, it adds the length of the
+   * mediaList array to the result
+   */
+  function previous() {
+    /* It's a modulo operation. It's a way to loop through an array. */
+    index = (index - 1 + mediaList.length) % mediaList.length;
+    updateLightbox();
+  }
+
+
+
+  document.getElementById('lightbox-next-button').addEventListener('click', () => {
+    next();
+  });
+
+  document.getElementById('lightbox-close-button').addEventListener('click', () => {
+    closeLightbox();
+  });
+
+  document.getElementById('lightbox-previous-button').addEventListener('click', () => {
+    previous();
+  });
+
+  /* Navigation with keyboard */
+  document.addEventListener('keydown', e => {
+    if (e.key === 'ArrowRight') {
+      next();
+    } else if (e.key === 'ArrowLeft') {
+      previous();
+    } else if (e.key === 'Escape') {
+      closeLightbox();
+    }
+  });
+  return { show };
 }

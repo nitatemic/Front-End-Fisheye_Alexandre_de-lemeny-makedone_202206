@@ -1,14 +1,16 @@
 // eslint-disable-next-line import/extensions
 import { getFilePath } from '../utils/getFilePath.js';
 // eslint-disable-next-line import/extensions
-import { createLightbox } from '../utils/lightbox.js';
+import lightboxFactory from '../utils/lightbox.js';
 
 export default function mediaFactory(media) {
+
   async function getMediaDOM(mediaList) {
     const path = getFilePath(media[0]);
     const mediaContainer = document.createElement('div');
     mediaContainer.className = 'media-container';
     for (let i = 0; i < mediaList.length; i++) {
+      const lightbox = lightboxFactory(mediaList, mediaList[i].id);
       const mediaPreview = document.createElement('div');
       mediaPreview.className = 'media-preview';
       mediaContainer.appendChild(mediaPreview);
@@ -24,8 +26,7 @@ export default function mediaFactory(media) {
         mediaVideo.setAttribute('title', `Miniature de la vidéo de ${mediaList[i].title}`);
         mediaVideo.removeAttribute('controls');
         mediaVideo.addEventListener('click', () => {
-          const lightbox = createLightbox(mediaList[i], true);
-          document.body.appendChild(lightbox);
+          lightbox.show();
         });
         mediaPreview.appendChild(mediaVideo);
       } else {
@@ -37,8 +38,7 @@ export default function mediaFactory(media) {
         mediaImage.setAttribute('loading', 'lazy');
         /* Ajouter un event listener sur l'image pour afficher la lightbox */
         mediaImage.addEventListener('click', () => {
-          const lightbox = createLightbox(mediaList[i], false);
-          document.body.appendChild(lightbox);
+          lightbox.show();
         });
         mediaPreview.appendChild(mediaImage);
       }
