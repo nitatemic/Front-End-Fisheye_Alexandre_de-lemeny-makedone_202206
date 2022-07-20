@@ -28,7 +28,7 @@ fetchPhotographerData(photographerId).then(async (data) => {
   switch (filter) {
     case 'date':
       mediaDOM = await mediaArray.filterByDate();
-      dropbtn1.innerText = 'Date';
+      dropbtn1.innerHTML = 'Date <i class="fa-solid fa-chevron-down" id="chevron"></i>';
       dropbtn1.setAttribute('aria-label', 'Trié par date');
       dropbtn2.innerText = 'Popularité';
       dropbtn2.setAttribute('href', `?id=${photographerId}&filter=popularity`);
@@ -40,7 +40,7 @@ fetchPhotographerData(photographerId).then(async (data) => {
 
     case 'title':
       mediaDOM = await mediaArray.filterByTitle();
-      dropbtn1.innerText = 'Titre';
+      dropbtn1.innerHTML = 'Titre <i class="fa-solid fa-chevron-down" id="chevron"></i>';
       dropbtn1.setAttribute('aria-label', 'Trié par titre');
       dropbtn2.innerText = 'Popularité';
       dropbtn2.setAttribute('href', `?id=${photographerId}&filter=popularity`);
@@ -61,6 +61,10 @@ fetchPhotographerData(photographerId).then(async (data) => {
       dropbtn3.setAttribute('aria-label', 'Trier par titre');
       break;
   }
+
+  const dropdown = document.getElementById('dropdown');
+  dropdown.addEventListener('mouseenter', () => document.getElementById('chevron').setAttribute('class', 'fa-solid fa-chevron-up'));
+  dropdown.addEventListener('mouseleave', () => document.getElementById('chevron').setAttribute('class', 'fa-solid fa-chevron-down'));
   photographerContainer.appendChild(await mediaDOM);
   /* Setting the price of the photographer. */
   document.getElementById('photographer-price').innerText = `${data.photographer.price}€ / jour`;
