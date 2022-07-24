@@ -41,7 +41,7 @@ export default function lightboxFactory(mediaList, mediaId) {
     /* Search media with the given index in mediaList */
     const media = mediaList[index];
     /* Is a pic or a video */
-    let mediaType = media.image === undefined ? 'video' : 'image';
+    const mediaType = media.image === undefined ? 'video' : 'image';
     let lightboxMedia = null;
     switch (mediaType) {
       case 'image':

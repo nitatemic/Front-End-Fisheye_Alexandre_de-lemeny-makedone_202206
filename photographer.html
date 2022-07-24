@@ -13,22 +13,22 @@
   </head>
   <body>
     <header>
-      <a href="index.html"><img src="assets/images/logo.png" alt="logo" class="logo"></a>
+      <a href="index.html" aria-label="Fisheye Home Page"><img src="assets/images/logo.png" alt="Logo de Fisheye" class="logo"></a>
     </header>
     <main id="main">
       <div class="photographer-container" id="photographer-container">
         <div id="photographer-summary">
         </div>
-        <button class="contact_button" type="button" onclick="displayModal()">Contactez-moi</button>
+        <button class="contact_button" id="contactMeButton" aria-label="Contact Me" type="button">Contactez-moi</button>
 
       </div> <!-- end of photograph-header -->
       <div class="photographer-content" id="photograph-content">
         <div class="filter-container">
           <div class="filter">
             <p>Trier par</p>
-            <div class="dropdown" id="dropdown">
+            <div class="dropdown" id="dropdown" aria-expanded="false">
               <button class="dropbtn" id="dropdown-btn-first" type="button">Popularité <i class="fa-solid fa-chevron-down" id="chevron"></i></button>
-              <div class="dropdown-content">
+              <div class="dropdown-content" id="dropdown-content">
                 <a id="dropdown-btn-second">Date</a>
                 <a id="dropdown-btn-third" >Titre</a>
               </div>
@@ -54,11 +54,11 @@
         </div>
       </div>
     </dialog>
-    <div id="contact_modal">
+    <dialog id="contact_modal">
 			<div class="modal">
 				<header id="photographer-header">
           <h2>Contactez-moi</h2>
-          <img src="assets/icons/close.svg" onclick="closeModal()"  alt="Bouton en forme de croix" aria-label="Fermer le formulaire de contact."/>
+          <img src="assets/icons/close.svg" id="closeContactMeButton" alt="Bouton en forme de croix" aria-label="Fermer le formulaire de contact."/>
         </header>
 				<form id="contact_form"> <!-- Contact form -->
 					<div>
@@ -74,8 +74,8 @@
           <button type="submit" class="contact_button" id="contact_submit">Envoyer</button>
 				</form>
 			</div>
-      <div class="photographer-price"></div>
-		</div> <!-- end of contact_modal -->
+		</dialog> <!-- end of contact_modal -->
+    <div class="photographer-price"></div>
     <div class="photographer-price-and-like">
       <div id="photographer-likes-container">
         <p id="photographer-likes"></p>

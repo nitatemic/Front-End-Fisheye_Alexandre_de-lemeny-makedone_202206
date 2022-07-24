@@ -58,7 +58,7 @@ export default function mediaFactory(media) {
       mediaLike.appendChild(mediaLikeCount);
       const mediaLikeIcon = document.createElement('i');
       mediaLikeIcon.className = 'fa-solid fa-heart fa-beat like-icon';
-      mediaLikeIcon.setAttribute('aria-label', 'J\'aime');
+      mediaLikeIcon.setAttribute('aria-label', 'Likes');
       let liked = false;
       mediaLikeIcon.addEventListener('click', () => {
         if (!liked) {

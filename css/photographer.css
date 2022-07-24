@@ -181,7 +181,7 @@ form input {
     background-color: #D3573C
 }
 
-.dropdown:hover .dropdown-content {
+.block {
     display: block;
 }
 

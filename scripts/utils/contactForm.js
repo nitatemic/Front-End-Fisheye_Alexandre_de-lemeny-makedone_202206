@@ -1,7 +1,7 @@
 /**
  * When the user clicks the button, display the modal.
  */
-function displayModal() {
+export function displayModal() {
   const modal = document.getElementById('contact_modal');
   modal.style.display = 'block';
   const overlay = document.createElement('div');
@@ -13,7 +13,7 @@ function displayModal() {
 /**
  * When the user clicks on the close button, the modal is hidden
  */
-function closeModal() {
+export function closeModal() {
   const modal = document.getElementById('contact_modal');
   modal.style.display = 'none';
   if (document.getElementById('contactOverlay')) {

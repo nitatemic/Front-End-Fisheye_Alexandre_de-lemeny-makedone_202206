@@ -4,6 +4,8 @@ import { fetchPhotographerData } from '../utils/fetchData.js';
 import photographerFactory from '../factories/photographer.js';
 // eslint-disable-next-line import/extensions
 import mediaFactory from '../factories/media.js';
+// eslint-disable-next-line import/extensions
+import { closeModal, displayModal } from '../utils/contactForm.js';
 
 /* Récupérer l'id du photographe dans l'url */
 const urlParams = new URLSearchParams(window.location.search);
@@ -63,8 +65,30 @@ fetchPhotographerData(photographerId).then(async (data) => {
   }
 
   const dropdown = document.getElementById('dropdown');
-  dropdown.addEventListener('mouseenter', () => document.getElementById('chevron').setAttribute('class', 'fa-solid fa-chevron-up'));
-  dropdown.addEventListener('mouseleave', () => document.getElementById('chevron').setAttribute('class', 'fa-solid fa-chevron-down'));
+  const dropdownContent = document.getElementById('dropdown-content');
+  //Si j'ouvre le menu dropdown, je change le chevron
+
+  dropdown.addEventListener('click', () => {
+    const chevron = document.getElementById('chevron');
+    if (chevron.classList.contains('fa-chevron-down')) {
+      chevron.classList.remove('fa-chevron-down');
+      chevron.classList.add('fa-chevron-up');
+      dropdownContent.classList.add('block');
+      dropdown.setAttribute('aria-expanded', 'true');
+    } else {
+      chevron.classList.remove('fa-chevron-up');
+      chevron.classList.add('fa-chevron-down');
+      dropdownContent.classList.remove('block');
+      dropdown.setAttribute('aria-expanded', 'false');
+    }
+  });
+  document.getElementById('contactMeButton').addEventListener('click', () => {
+    displayModal();
+  });
+  document.getElementById('closeContactMeButton').addEventListener('click', () => {
+    closeModal();
+  });
+
   photographerContainer.appendChild(await mediaDOM);
   /* Setting the price of the photographer. */
   document.getElementById('photographer-price').innerText = `${data.photographer.price}€ / jour`;
