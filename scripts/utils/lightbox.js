@@ -2,6 +2,7 @@ import { getFilePath } from './getFilePath.js';
 
 export default function lightboxFactory(mediaList, mediaId) {
   let index = 0;
+  const lightboxDOM = document.getElementById('lightbox');
 
   function clear() {
     const lightboxMediaContainer = document.getElementById('lightbox-media-container');
@@ -22,6 +23,7 @@ export default function lightboxFactory(mediaList, mediaId) {
   function show() {
     /* Disable scroll */
     document.body.style.overflow = 'hidden';
+    lightboxDOM.setAttribute('aria-hidden', 'false');
     /* Show the lightbox */
     document.getElementById('lightbox').classList.add('show');
     const lightboxDom = document.getElementById('lightbox');
@@ -60,8 +62,8 @@ export default function lightboxFactory(mediaList, mediaId) {
         lightboxMedia.setAttribute('loop', 'false');
         lightboxMedia.setAttribute('muted', 'false');
         lightboxMedia.setAttribute('preload', 'true');
-        lightboxMedia.setAttribute('alt', `Miniature de la vidéo de ${media.title}`);
-        lightboxMedia.setAttribute('title', `Miniature de la vidéo de ${media.title}`);
+        lightboxMedia.setAttribute('alt', `${media.title}`);
+        lightboxMedia.setAttribute('title', `${media.title}`);
         break;
     }
     if (document.getElementById('lightbox-media-container').firstChild !== document.getElementById('lightbox-media-title')) {
@@ -97,14 +99,13 @@ export default function lightboxFactory(mediaList, mediaId) {
     updateLightbox();
   }
 
-
-
   document.getElementById('lightbox-next-button').addEventListener('click', () => {
     next();
   });
 
   document.getElementById('lightbox-close-button').addEventListener('click', () => {
     closeLightbox();
+    lightboxDOM.setAttribute('aria-hidden', 'true');
   });
 
   document.getElementById('lightbox-previous-button').addEventListener('click', () => {

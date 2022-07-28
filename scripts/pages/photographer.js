@@ -66,7 +66,6 @@ fetchPhotographerData(photographerId).then(async (data) => {
 
   const dropdown = document.getElementById('dropdown');
   const dropdownContent = document.getElementById('dropdown-content');
-  //Si j'ouvre le menu dropdown, je change le chevron
 
   dropdown.addEventListener('click', () => {
     const chevron = document.getElementById('chevron');
@@ -88,6 +87,10 @@ fetchPhotographerData(photographerId).then(async (data) => {
   document.getElementById('closeContactMeButton').addEventListener('click', () => {
     closeModal();
   });
+
+  const modalTitle = document.getElementById('modal-title');
+  modalTitle.innerText = `${modalTitle.innerText} ${data.photographer.name}`;
+  document.getElementById('contact_modal').setAttribute('aria-labelledby', 'data.photographer.name');
 
   photographerContainer.appendChild(await mediaDOM);
   /* Setting the price of the photographer. */

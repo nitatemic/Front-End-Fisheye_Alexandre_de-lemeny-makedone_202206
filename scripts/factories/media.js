@@ -11,7 +11,7 @@ export default function mediaFactory(media) {
     mediaContainer.className = 'media-container';
     for (let i = 0; i < mediaList.length; i++) {
       const lightbox = lightboxFactory(mediaList, mediaList[i].id);
-      const mediaPreview = document.createElement('div');
+      const mediaPreview = document.createElement('a');
       mediaPreview.className = 'media-preview';
       mediaContainer.appendChild(mediaPreview);
       if (mediaList[i].image === undefined) {

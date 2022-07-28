@@ -38,16 +38,16 @@
       </div> <!-- end of photograph-content -->
     </main>
     <!-- Lightbox with close, next and previous buttons -->
-    <dialog class="lightbox" id="lightbox">
+    <dialog class="lightbox" aria-label="Image closeup view" aria-hidden="true" id="lightbox">
       <div class="lightbox-content">
         <div class="lightbox-close">
-          <a class="lightbox-close-button" id="lightbox-close-button" type="button"><i class="fa-solid fa-xmark"></i></a>
+          <a class="lightbox-close-button" id="lightbox-close-button" aria-label="Close dialog"type="button"><i class="fa-solid fa-xmark"></i></a>
         </div>
         <div class="lightbox-next">
-          <a class="lightbox-next-button" id="lightbox-next-button" type="button"><i class="fa-solid fa-chevron-right"></i></a>
+          <a class="lightbox-next-button" id="lightbox-next-button" aria-label="Next image" type="button"><i class="fa-solid fa-chevron-right"></i></a>
         </div>
         <div class="lightbox-previous">
-          <a class="lightbox-previous-button" id="lightbox-previous-button" type="button"><i class="fa-solid fa-chevron-left"></i></a>
+          <a class="lightbox-previous-button" id="lightbox-previous-button" aria-label="Previous image" type="button"><i class="fa-solid fa-chevron-left"></i></a>
         </div>
         <div class="lightbox-media-container" id="lightbox-media-container">
           <h1 class="lightbox-media-title" id="lightbox-media-title"></h1>
@@ -57,8 +57,8 @@
     <dialog id="contact_modal">
 			<div class="modal">
 				<header id="photographer-header">
-          <h2>Contactez-moi</h2>
-          <img src="assets/icons/close.svg" id="closeContactMeButton" alt="Bouton en forme de croix" aria-label="Fermer le formulaire de contact."/>
+          <h2 id="modal-title">Contactez-moi</h2>
+          <img src="assets/icons/close.svg" id="closeContactMeButton" alt="Close Contact form" aria-label="Close contact form"/>
         </header>
 				<form id="contact_form"> <!-- Contact form -->
 					<div>
@@ -71,7 +71,7 @@
             <label for="message">Message</label>
             <textarea name="message" id="message" placeholder="Votre message"></textarea>
 					</div>
-          <button type="submit" class="contact_button" id="contact_submit">Envoyer</button>
+          <button type="submit" class="contact_button" aria-label="Send" id="contact_submit">Envoyer</button>
 				</form>
 			</div>
 		</dialog> <!-- end of contact_modal -->
