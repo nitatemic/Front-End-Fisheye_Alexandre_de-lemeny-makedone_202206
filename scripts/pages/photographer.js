@@ -90,7 +90,7 @@ fetchPhotographerData(photographerId).then(async (data) => {
 
   const modalTitle = document.getElementById('modal-title');
   modalTitle.innerText = `${modalTitle.innerText} ${data.photographer.name}`;
-  document.getElementById('contact_modal').setAttribute('aria-labelledby', 'data.photographer.name');
+  document.getElementById('contact_modal').setAttribute('aria-labelledby', 'modal-title');
 
   photographerContainer.appendChild(await mediaDOM);
   /* Setting the price of the photographer. */
