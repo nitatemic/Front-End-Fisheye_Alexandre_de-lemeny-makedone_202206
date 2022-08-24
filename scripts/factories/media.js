@@ -4,16 +4,29 @@ import { getFilePath } from '../utils/getFilePath.js';
 import lightboxFactory from '../utils/lightbox.js';
 
 export default function mediaFactory(media) {
-
   async function getMediaDOM(mediaList) {
     const path = getFilePath(media[0]);
     const mediaContainer = document.createElement('div');
     mediaContainer.className = 'media-container';
     for (let i = 0; i < mediaList.length; i++) {
       const lightbox = lightboxFactory(mediaList, mediaList[i].id);
+      const mediaBox = document.createElement('article');
+      mediaBox.className = 'media-box';
+      mediaBox.setAttribute('tabindex', '0');
+      mediaBox.setAttribute('aria-label', mediaList[i].title);
+      mediaBox.addEventListener('click', () => {
+        lightbox.show();
+      });
+      mediaBox.addEventListener('keyup', (e) => {
+        if (e.key === 'Enter') {
+          lightbox.show();
+        }
+      });
       const mediaPreview = document.createElement('a');
+      /* Add a tabindex to be able to nav with a keyboard */
       mediaPreview.className = 'media-preview';
-      mediaContainer.appendChild(mediaPreview);
+      mediaBox.appendChild(mediaPreview);
+      mediaContainer.appendChild(mediaBox);
       if (mediaList[i].image === undefined) {
         const mediaVideo = document.createElement('video');
         mediaVideo.className = 'media-video';
@@ -36,10 +49,6 @@ export default function mediaFactory(media) {
         mediaImage.setAttribute('alt', mediaList[i].title);
         mediaImage.setAttribute('aria-label', mediaList[i].title);
         mediaImage.setAttribute('loading', 'lazy');
-        /* Ajouter un event listener sur l'image pour afficher la lightbox */
-        mediaImage.addEventListener('click', () => {
-          lightbox.show();
-        });
         mediaPreview.appendChild(mediaImage);
       }
 
@@ -51,6 +60,7 @@ export default function mediaFactory(media) {
       mediaSummary.appendChild(mediaTitle);
       const mediaLike = document.createElement('div');
       mediaLike.className = 'media-like';
+      mediaLike.tabIndex = '0';
       mediaSummary.appendChild(mediaLike);
       const mediaLikeCount = document.createElement('span');
       mediaLikeCount.textContent = mediaList[i].likes;
@@ -60,17 +70,33 @@ export default function mediaFactory(media) {
       mediaLikeIcon.className = 'fa-solid fa-heart fa-beat like-icon';
       mediaLikeIcon.setAttribute('aria-label', 'Likes');
       let liked = false;
-      mediaLikeIcon.addEventListener('click', () => {
+      mediaLike.addEventListener('click', () => {
         if (!liked) {
-          mediaLikeCount.textContent = parseInt(mediaLikeCount.textContent) + 1;
-          document.getElementById('photographer-likes').textContent = parseInt(document.getElementById('photographer-likes').textContent) + 1;
+          mediaLikeCount.textContent = parseInt(mediaLikeCount.textContent, 10) + 1;
+          document.getElementById('photographer-likes').textContent = parseInt(document.getElementById('photographer-likes').textContent, 10) + 1;
           mediaLikeIcon.classList.add('red');
           liked = true;
         } else {
-          mediaLikeCount.textContent = parseInt(mediaLikeCount.textContent) - 1;
-          document.getElementById('photographer-likes').textContent = parseInt(document.getElementById('photographer-likes').textContent) - 1;
+          mediaLikeCount.textContent = parseInt(mediaLikeCount.textContent, 10) - 1;
+          document.getElementById('photographer-likes').textContent = parseInt(document.getElementById('photographer-likes').textContent, 10) - 1;
           mediaLikeIcon.classList.remove('red');
           liked = false;
+        }
+      });
+      mediaLike.addEventListener('keyup', (e) => {
+        e.preventDefault();
+        if (e.key === 'Enter') {
+          if (!liked) {
+            mediaLikeCount.textContent = parseInt(mediaLikeCount.textContent, 10) + 1;
+            document.getElementById('photographer-likes').textContent = parseInt(document.getElementById('photographer-likes').textContent, 10) + 1;
+            mediaLikeIcon.classList.add('red');
+            liked = true;
+          } else {
+            mediaLikeCount.textContent = parseInt(mediaLikeCount.textContent, 10) - 1;
+            document.getElementById('photographer-likes').textContent = parseInt(document.getElementById('photographer-likes').textContent, 10) - 1;
+            mediaLikeIcon.classList.remove('red');
+            liked = false;
+          }
         }
       });
       mediaLike.appendChild(mediaLikeIcon);

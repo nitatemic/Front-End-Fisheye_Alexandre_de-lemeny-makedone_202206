@@ -19,24 +19,6 @@ export default function lightboxFactory(mediaList, mediaId) {
     lightboxDom.close();
   }
 
-  /* Fonction qui affiche la lightbox */
-  function show() {
-    /* Disable scroll */
-    document.body.style.overflow = 'hidden';
-    lightboxDOM.setAttribute('aria-hidden', 'false');
-    /* Show the lightbox */
-    document.getElementById('lightbox').classList.add('show');
-    const lightboxDom = document.getElementById('lightbox');
-    /* Search index of media in mediaList */
-    index = mediaList.findIndex((media) => media.id === mediaId);
-    updateLightbox();
-    lightboxDom.show();
-    document.addEventListener('keydown', e => {
-      if (e.key === 'Escape') {
-        closeLightbox();
-      }
-    });
-  }
 
   function updateLightbox() {
     const path = getFilePath(mediaList[0]);
@@ -79,6 +61,24 @@ export default function lightboxFactory(mediaList, mediaId) {
     lightboxMediaContainer.append(lightboxTitle);
   }
 
+  /* Fonction qui affiche la lightbox */
+  function show() {
+    /* Disable scroll */
+    document.body.style.overflow = 'hidden';
+    lightboxDOM.setAttribute('aria-hidden', 'false');
+    /* Show the lightbox */
+    document.getElementById('lightbox').classList.add('show');
+    const lightboxDom = document.getElementById('lightbox');
+    /* Search index of media in mediaList */
+    index = mediaList.findIndex((media) => media.id === mediaId);
+    updateLightbox();
+    lightboxDom.show();
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') {
+        closeLightbox();
+      }
+    });
+  }
   /**
    * The next function increments the index by one, and then uses the modulo operator to loop through
    * the mediaList array.
@@ -103,17 +103,36 @@ export default function lightboxFactory(mediaList, mediaId) {
     next();
   });
 
+  document.getElementById('lightbox-next-button').addEventListener('enter', (e) => {
+    if (e.key === 'Enter') {
+      next();
+    }
+  });
+
   document.getElementById('lightbox-close-button').addEventListener('click', () => {
     closeLightbox();
     lightboxDOM.setAttribute('aria-hidden', 'true');
+  });
+
+  document.getElementById('lightbox-close-button').addEventListener('keyup', (e) => {
+    if (e.key === 'Enter') {
+      closeLightbox();
+      lightboxDOM.setAttribute('aria-hidden', 'true');
+    }
   });
 
   document.getElementById('lightbox-previous-button').addEventListener('click', () => {
     previous();
   });
 
+  document.getElementById('lightbox-previous-button').addEventListener('keyup', (e) => {
+    if (e.key === 'Enter') {
+      previous();
+    }
+  });
+
   /* Navigation with keyboard */
-  document.addEventListener('keydown', e => {
+  document.addEventListener('keydown', (e) => {
     if (e.key === 'ArrowRight') {
       next();
     } else if (e.key === 'ArrowLeft') {

@@ -8,7 +8,7 @@
     <link href="css/style.css" rel="stylesheet" type="text/css" />
     <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
     <script defer type="module" src="/scripts/pages/photographer.js"></script>
-    <script defer src="/scripts/utils/contactForm.js"></script>
+    <script defer src="/scripts/utils/contactForm.js" type="module"></script>
     <script src="https://kit.fontawesome.com/41ea70b874.js" crossorigin="anonymous"></script>
   </head>
   <body>
@@ -29,8 +29,8 @@
             <div class="dropdown" id="dropdown" aria-expanded="false">
               <button class="dropbtn" id="dropdown-btn-first" type="button">Popularité <i class="fa-solid fa-chevron-down" id="chevron"></i></button>
               <div class="dropdown-content" id="dropdown-content">
-                <a id="dropdown-btn-second">Date</a>
-                <a id="dropdown-btn-third" >Titre</a>
+                <a id="dropdown-btn-second"  >Date</a>
+                <a id="dropdown-btn-third"> >Titre</a>
               </div>
             </div>
           </div>
@@ -41,7 +41,7 @@
     <dialog class="lightbox" aria-label="Image closeup view" aria-hidden="true" id="lightbox">
       <div class="lightbox-content">
         <div class="lightbox-close">
-          <a class="lightbox-close-button" id="lightbox-close-button" aria-label="Close dialog"type="button"><i class="fa-solid fa-xmark"></i></a>
+          <a class="lightbox-close-button" id="lightbox-close-button" aria-label="Close dialog" type="button"><i class="fa-solid fa-xmark"></i></a>
         </div>
         <div class="lightbox-next">
           <a class="lightbox-next-button" id="lightbox-next-button" aria-label="Next image" type="button"><i class="fa-solid fa-chevron-right"></i></a>
@@ -62,12 +62,12 @@
         </header>
 				<form id="contact_form"> <!-- Contact form -->
 					<div>
-						<label for="firstname">Prénom</label>
-            <input type="text" name="firstname" id="firstname" autocomplete="given-name" placeholder="Votre prénom" />
+						<label for="firstname"  >Prénom</label>
+            <input type="text" name="firstname" id="firstname" autocomplete="given-name" required placeholder="Votre prénom" />
             <label for="lastname">Nom</label>
-            <input type="text" name="lastname" id="lastname" autocomplete="family-name" placeholder="Votre nom" />
+            <input type="text" name="lastname" id="lastname" autocomplete="family-name" required placeholder="Votre nom" />
             <label for="email">Email</label>
-            <input type="email" name="email" id="email" autocomplete="email" placeholder="Votre email" />
+            <input type="email" name="email" id="email" autocomplete="email" required placeholder="Votre email" />
             <label for="message">Message</label>
             <textarea name="message" id="message" placeholder="Votre message"></textarea>
 					</div>

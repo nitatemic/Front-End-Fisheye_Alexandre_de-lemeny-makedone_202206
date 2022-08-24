@@ -8,7 +8,10 @@ export function displayModal() {
   overlay.classList.add('overlay');
   overlay.setAttribute('id', 'contactOverlay');
   document.body.appendChild(overlay);
+  const firstInput = document.getElementById('firstname');
+  firstInput.focus();
 }
+
 
 /**
  * When the user clicks on the close button, the modal is hidden
@@ -19,6 +22,10 @@ export function closeModal() {
   if (document.getElementById('contactOverlay')) {
     document.getElementById('contactOverlay').remove();
   }
+  /* Reset the form */
+  const form = document.getElementById('contact_form');
+  form.reset();
+  document.getElementById('contactMeButton').focus();
 }
 
 /* If user push 'esc' key when modal is open, close the modal */
@@ -28,15 +35,43 @@ document.addEventListener('keydown', (e) => {
   }
 });
 
+function checkMail(email) {
+  const regex = /^([a-z0-9]+(?:[._-][a-z0-9]+)*)@([a-z0-9]+(?:[.-][a-z0-9]+)*\.[a-z]{2,})$/i;
+  console.log(regex.test(email));
+  return regex.test(email);
+}
 /* When I click on submit button, send the form */
-document.getElementById('contact_submit').addEventListener('click', (e) => {
+document.getElementById('contact_submit').addEventListener('submit', (e) => {
   e.preventDefault();
   const form = document.getElementById('contact_form');
-  const formData = new FormData(form);
-  const data = {};
-  formData.forEach((value, key) => {
-    data[key] = value;
-  });
-  console.log(data);
-  closeModal();
+  const firstname = form.firstname.value;
+  const lastname = form.lastname.value;
+  const email = form.email.value;
+  const message = form.message.value;
+
+
+  if (firstname && lastname && email && checkMail(email) && message) {
+    const formData = new FormData(form);
+    const data = {};
+    formData.forEach((value, key) => {
+      data[key] = value;
+    });
+    console.log(data);
+    closeModal();
+  } else {
+    /* Show errors where they need to be */
+    if (!firstname) {
+      form.firstname.classList.add('error');
+    }
+    if (!lastname) {
+      form.lastname.classList.add('error');
+    }
+    if (!email || !checkMail(email)) {
+      form.email.classList.add('error');
+    }
+    if (!message) {
+      form.message.classList.add('error');
+    }
+  }
 });
+

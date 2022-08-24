@@ -74,7 +74,14 @@ fetchPhotographerData(photographerId).then(async (data) => {
       chevron.classList.add('fa-chevron-up');
       dropdownContent.classList.add('block');
       dropdown.setAttribute('aria-expanded', 'true');
-    } else {
+      dropdownContent.setAttribute('aria-hidden', 'false');
+      dropdownContent.setAttribute('aria-label', 'Menu déroulant');
+      /* Navigation dans le menu déroulant avec les flèches */
+      document.addEventListener('keydown', (e) => {
+        document.getElementById('dropdown-btn-first').focus();
+      });
+    }
+    else {
       chevron.classList.remove('fa-chevron-up');
       chevron.classList.add('fa-chevron-down');
       dropdownContent.classList.remove('block');

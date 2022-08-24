@@ -141,7 +141,7 @@ form input {
     cursor: pointer;
 }
 
-.dropdown:hover .dropbtn {
+.dropbtn:hover {
     background-color: #D3573C;
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
@@ -173,11 +173,14 @@ form input {
     display: block;
     font-size: 20px;
     font-weight: bold;
-    border-top : 1px solid white;
-    outline-offset: -5px
+    border-top: 1px solid white;
 }
 
 .dropdown-content a:hover {
+    background-color: #D3573C
+}
+
+.dropdown-content > a:active {
     background-color: #D3573C
 }
 
