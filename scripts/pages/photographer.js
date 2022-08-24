@@ -27,6 +27,8 @@ fetchPhotographerData(photographerId).then(async (data) => {
   const dropbtn1 = document.getElementById('dropdown-btn-first');
   const dropbtn2 = document.getElementById('dropdown-btn-second');
   const dropbtn3 = document.getElementById('dropdown-btn-third');
+
+
   switch (filter) {
     case 'date':
       mediaDOM = await mediaArray.filterByDate();
@@ -76,18 +78,14 @@ fetchPhotographerData(photographerId).then(async (data) => {
       dropdown.setAttribute('aria-expanded', 'true');
       dropdownContent.setAttribute('aria-hidden', 'false');
       dropdownContent.setAttribute('aria-label', 'Menu déroulant');
-      /* Navigation dans le menu déroulant avec les flèches */
-      document.addEventListener('keydown', (e) => {
-        document.getElementById('dropdown-btn-first').focus();
-      });
-    }
-    else {
+    } else {
       chevron.classList.remove('fa-chevron-up');
       chevron.classList.add('fa-chevron-down');
       dropdownContent.classList.remove('block');
       dropdown.setAttribute('aria-expanded', 'false');
     }
   });
+
   document.getElementById('contactMeButton').addEventListener('click', () => {
     displayModal();
   });
