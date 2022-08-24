@@ -54,7 +54,7 @@ function sendForm() {
     });
 
     // eslint-disable-next-line no-console
-    console.log(data);
+    console.log(data); // skipcq : JS-0002
     closeModal();
   } else {
     /* Show errors where they need to be */
