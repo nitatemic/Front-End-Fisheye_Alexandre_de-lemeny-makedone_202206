@@ -1,5 +1,6 @@
 /**
- * It fetches the data from the JSON file, parses it, and returns an object with the photographers and
+ * It fetches the data from the JSON file, parses it,
+ * and returns an object with the photographers and
  * media arrays
  * @returns An object with two properties, photographers and media.
  */
@@ -21,8 +22,8 @@ export async function fetchPhotographerData(id) {
   const response = await fetch('../../data/photographers.json');
   const responseObject = JSON.parse(await response.text());
   const { photographers, media } = responseObject;
-  const photographer = photographers.find((photographer) => photographer.id === parseInt(id));
-  const mediaForPhotographer = media.filter((media) => media.photographerId === parseInt(id));
+  const photographer = photographers.find((photographer) => photographer.id === parseInt(id, 10));
+  const mediaForPhotographer = media.filter((media) => media.photographerId === parseInt(id, 10));
 
   let totalLikes = 0;
   /* For every media with the same photographerId, we add the likes to the totalLikes variable. */
@@ -30,5 +31,5 @@ export async function fetchPhotographerData(id) {
     totalLikes += media.likes;
   });
 
-  return ({ photographer, media: [...mediaForPhotographer], totalLikes});
+  return ({ photographer, media: [...mediaForPhotographer], totalLikes });
 }

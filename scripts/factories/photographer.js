@@ -6,7 +6,7 @@
  */
 export default function photographerFactory(data) {
   const {
-    name, id, city, country, tagline, price, portrait, media
+    name, id, city, country, tagline, price, portrait,
   } = data;
 
   const picture = `../assets/photographers/${portrait}`;
@@ -22,7 +22,7 @@ export default function photographerFactory(data) {
     const img = document.createElement('img');
     img.setAttribute('src', picture);
     img.className = 'photographer_picture round cover shadow';
-    img.setAttribute('alt', ``);
+    img.setAttribute('alt', '');
     link.appendChild(img);
 
     const h2 = document.createElement('h2');

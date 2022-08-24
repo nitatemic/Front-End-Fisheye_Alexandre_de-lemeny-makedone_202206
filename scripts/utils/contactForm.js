@@ -12,7 +12,6 @@ export function displayModal() {
   firstInput.focus();
 }
 
-
 /**
  * When the user clicks on the close button, the modal is hidden
  */
@@ -37,7 +36,6 @@ document.addEventListener('keydown', (e) => {
 
 function checkMail(email) {
   const regex = /^([a-z0-9]+(?:[._-][a-z0-9]+)*)@([a-z0-9]+(?:[.-][a-z0-9]+)*\.[a-z]{2,})$/i;
-  console.log(regex.test(email));
   return regex.test(email);
 }
 
@@ -48,13 +46,14 @@ function sendForm() {
   const email = form.email.value;
   const message = form.message.value;
 
-
   if (firstname && lastname && email && checkMail(email) && message) {
     const formData = new FormData(form);
     const data = [];
     formData.forEach((value, key) => {
       data[key] = value;
     });
+
+    // eslint-disable-next-line no-console
     console.log(data);
     closeModal();
   } else {
@@ -74,8 +73,7 @@ function sendForm() {
   }
 }
 /* When I click on submit button, send the form */
-document.getElementById('contact_submit').addEventListener('click', event => {
-
+document.getElementById('contact_submit').addEventListener('click', (event) => {
   event.preventDefault();
   sendForm();
 });

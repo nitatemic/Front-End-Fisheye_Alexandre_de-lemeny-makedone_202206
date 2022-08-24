@@ -28,7 +28,6 @@ fetchPhotographerData(photographerId).then(async (data) => {
   const dropbtn2 = document.getElementById('dropdown-btn-second');
   const dropbtn3 = document.getElementById('dropdown-btn-third');
 
-
   switch (filter) {
     case 'date':
       mediaDOM = await mediaArray.filterByDate();
