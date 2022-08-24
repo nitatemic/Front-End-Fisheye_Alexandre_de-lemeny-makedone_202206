@@ -57,16 +57,19 @@ export default function photographerFactory(data) {
     const nameH1 = document.createElement('h1');
     nameH1.textContent = name;
     nameH1.className = 'photographer-name';
+    nameH1.tabindex = '0';
     summary.appendChild(nameH1);
 
     const cityH2 = document.createElement('h2');
     cityH2.textContent = `${city}, ${country}`;
     cityH2.className = 'photographer-city';
+    cityH2.tabindex = '0';
     summary.appendChild(cityH2);
 
     const taglineP = document.createElement('p');
     taglineP.textContent = tagline;
     taglineP.className = 'photographer-tagline';
+    taglineP.tabindex = '0';
     summary.appendChild(taglineP);
 
     return (summary);

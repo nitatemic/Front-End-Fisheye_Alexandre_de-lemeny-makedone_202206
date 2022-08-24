@@ -40,9 +40,8 @@ function checkMail(email) {
   console.log(regex.test(email));
   return regex.test(email);
 }
-/* When I click on submit button, send the form */
-document.getElementById('contact_submit').addEventListener('submit', (e) => {
-  e.preventDefault();
+
+function sendForm() {
   const form = document.getElementById('contact_form');
   const firstname = form.firstname.value;
   const lastname = form.lastname.value;
@@ -52,7 +51,7 @@ document.getElementById('contact_submit').addEventListener('submit', (e) => {
 
   if (firstname && lastname && email && checkMail(email) && message) {
     const formData = new FormData(form);
-    const data = {};
+    const data = [];
     formData.forEach((value, key) => {
       data[key] = value;
     });
@@ -73,5 +72,17 @@ document.getElementById('contact_submit').addEventListener('submit', (e) => {
       form.message.classList.add('error');
     }
   }
+}
+/* When I click on submit button, send the form */
+document.getElementById('contact_submit').addEventListener('click', event => {
+
+  event.preventDefault();
+  sendForm();
 });
 
+/* When I press enter, send the form */
+document.getElementById('contact_form').addEventListener('keyup', (e) => {
+  if (e.key === 'Enter') {
+    sendForm();
+  }
+});

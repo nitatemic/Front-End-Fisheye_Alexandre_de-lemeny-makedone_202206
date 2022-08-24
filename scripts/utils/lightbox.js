@@ -34,11 +34,14 @@ export default function lightboxFactory(mediaList, mediaId) {
         lightboxMedia.setAttribute('src', `${path}/${media.image}`);
         lightboxMedia.setAttribute('alt', media.title);
         lightboxMedia.setAttribute('aria-label', media.title);
+        lightboxMedia.id = 'lightbox-media';
+        lightboxMedia.tabindex = '0';
         break;
 
       case 'video':
         lightboxMedia = document.createElement('video');
         lightboxMedia.className = 'lightbox-media';
+        lightboxMedia.id = 'lightbox-media';
         lightboxMedia.setAttribute('src', `${path}/${media.video}`);
         lightboxMedia.setAttribute('controls', 'true');
         lightboxMedia.setAttribute('loop', 'false');
@@ -46,6 +49,7 @@ export default function lightboxFactory(mediaList, mediaId) {
         lightboxMedia.setAttribute('preload', 'true');
         lightboxMedia.setAttribute('alt', `${media.title}`);
         lightboxMedia.setAttribute('title', `${media.title}`);
+        lightboxMedia.tabindex = '0';
         break;
     }
     if (document.getElementById('lightbox-media-container').firstChild !== document.getElementById('lightbox-media-title')) {
@@ -73,7 +77,8 @@ export default function lightboxFactory(mediaList, mediaId) {
     index = mediaList.findIndex((media) => media.id === mediaId);
     updateLightbox();
     lightboxDom.show();
-    document.addEventListener('keydown', e => {
+    document.getElementById('lightbox-media').focus();
+    document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape') {
         closeLightbox();
       }
