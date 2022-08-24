@@ -8,23 +8,24 @@ export default function mediaFactory(media) {
     const path = getFilePath(media[0]);
     const mediaContainer = document.createElement('div');
     mediaContainer.className = 'media-container';
-    for (let i = 0; i < mediaList.length; i++) {
+    for (let i = 0; i < mediaList.length; i += 1) {
       const lightbox = lightboxFactory(mediaList, mediaList[i].id);
       const mediaBox = document.createElement('article');
       mediaBox.className = 'media-box';
-      mediaBox.setAttribute('tabindex', '0');
-      mediaBox.setAttribute('aria-label', mediaList[i].title);
-      mediaBox.addEventListener('click', () => {
+
+      const mediaPreview = document.createElement('div');
+      /* Add a tabindex to be able to nav with a keyboard */
+      mediaPreview.className = 'media-preview';
+      mediaPreview.setAttribute('tabindex', '0');
+      mediaPreview.setAttribute('aria-label', mediaList[i].title);
+      mediaPreview.addEventListener('click', () => {
         lightbox.show();
       });
-      mediaBox.addEventListener('keyup', (e) => {
+      mediaPreview.addEventListener('keyup', (e) => {
         if (e.key === 'Enter') {
           lightbox.show();
         }
       });
-      const mediaPreview = document.createElement('a');
-      /* Add a tabindex to be able to nav with a keyboard */
-      mediaPreview.className = 'media-preview';
       mediaBox.appendChild(mediaPreview);
       mediaContainer.appendChild(mediaBox);
       if (mediaList[i].image === undefined) {
@@ -60,7 +61,7 @@ export default function mediaFactory(media) {
       mediaSummary.appendChild(mediaTitle);
       const mediaLike = document.createElement('div');
       mediaLike.className = 'media-like';
-      mediaLike.tabIndex = '0';
+      mediaLike.tabIndex = 0;
       mediaSummary.appendChild(mediaLike);
       const mediaLikeCount = document.createElement('span');
       mediaLikeCount.textContent = mediaList[i].likes;
@@ -100,7 +101,7 @@ export default function mediaFactory(media) {
         }
       });
       mediaLike.appendChild(mediaLikeIcon);
-      mediaPreview.appendChild(mediaSummary);
+      mediaBox.appendChild(mediaSummary);
     }
     return mediaContainer;
   }
