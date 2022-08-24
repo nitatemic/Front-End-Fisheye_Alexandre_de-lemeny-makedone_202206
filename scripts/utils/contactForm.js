@@ -34,11 +34,23 @@ document.addEventListener('keydown', (e) => {
   }
 });
 
+/**
+ * It checks if the email address is valid
+ * @param email - The email address to validate.
+ * @returns A boolean value.
+ */
 function checkMail(email) {
   const regex = /^([a-z0-9]+(?:[._-][a-z0-9]+)*)@([a-z0-9]+(?:[.-][a-z0-9]+)*\.[a-z]{2,})$/i;
   return regex.test(email);
 }
 
+/**
+ * "If the form is valid, send it to the server, otherwise show errors where they need to be."
+ *
+ * The first thing we do is get the form element and all the input elements. Then we check if all the
+ * inputs are valid. If they are, we create a FormData object and send it to the server. If they
+ * aren't, we add the error class to the invalid inputs
+ */
 function sendForm() {
   const form = document.getElementById('contact_form');
   const firstname = form.firstname.value;
