@@ -35,7 +35,6 @@ export default function lightboxFactory(mediaList, mediaId) {
         lightboxMedia.setAttribute('alt', media.title);
         lightboxMedia.setAttribute('aria-label', media.title);
         lightboxMedia.id = 'lightbox-media';
-        lightboxMedia.tabindex = '0';
         break;
 
       case 'video':
@@ -49,7 +48,6 @@ export default function lightboxFactory(mediaList, mediaId) {
         lightboxMedia.setAttribute('preload', 'true');
         lightboxMedia.setAttribute('alt', `${media.title}`);
         lightboxMedia.setAttribute('title', `${media.title}`);
-        lightboxMedia.tabindex = '0';
         break;
     }
     if (document.getElementById('lightbox-media-container').firstChild !== document.getElementById('lightbox-media-title')) {
