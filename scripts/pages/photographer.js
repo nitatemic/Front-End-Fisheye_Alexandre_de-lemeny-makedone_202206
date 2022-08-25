@@ -99,7 +99,9 @@ fetchPhotographerData(photographerId).then(async (data) => {
   photographerContainer.appendChild(await mediaDOM);
   /* Setting the price of the photographer. */
   document.getElementById('photographer-price').innerText = `${data.photographer.price}€ / jour`;
+  document.getElementById('photographer-price').setAttribute('aria-label', `Prix du photographe : ${data.photographer.price}€ par jour`);
 
   /* Setting the total of likes of the photographer. */
   document.getElementById('photographer-likes').innerText = `${data.totalLikes}`;
+  document.getElementById('photographer-likes').setAttribute('aria-label', `Nombre total de like du photographe : ${data.totalLikes} likes`);
 });
