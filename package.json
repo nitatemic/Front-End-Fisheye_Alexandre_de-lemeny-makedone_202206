@@ -7,10 +7,10 @@
   "author": "nitatemic <alexandre@nitatemic.dev>",
   "license": "MIT",
   "devDependencies": {
-    "eslint": "^8.17.0",
+    "eslint": "^8.26.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-plugin-import": "^2.26.0",
-    "hint": "^7.1.0",
+    "hint": "^7.1.11",
     "vite": "^3.0.9",
     "vite-plugin-mkcert": "^1.9.0"
   },
